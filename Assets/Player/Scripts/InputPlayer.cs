@@ -31,7 +31,7 @@ public class InputPlayer : MonoBehaviour
 
     protected virtual void RotateCharacter(Vector3 moveDirection)
     {            
-        if (Vector3.Angle(transform.forward, -moveDirection) > 0)
+        if (moveDirection.magnitude > 0.1f)
         {
             Vector3 newDirection = Vector3.RotateTowards(transform.forward, -moveDirection, _speedRotate, 0.0f);
             transform.rotation = Quaternion.LookRotation(newDirection);
