@@ -33,6 +33,6 @@ public class PlayerShoot : InputPlayer
 
     protected override void RotateCharacter(Vector3 moveDirection)
     {
-        base.RotateCharacter(moveDirection.normalized);
+        base.RotateCharacter(moveDirection);
     }
 }
