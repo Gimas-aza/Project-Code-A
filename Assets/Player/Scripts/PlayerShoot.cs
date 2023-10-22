@@ -26,7 +26,7 @@ public class PlayerShoot : InputPlayer
     private void FixedUpdate()
     {
         _drivingDirections = _actionMove.ReadValue<Vector2>();
-        _drivingDirections = new Vector3(-_drivingDirections.y, 0, _drivingDirections.x);
+        _drivingDirections = GetDirection(_drivingDirections);
 
         RotateCharacter(_drivingDirections);
     }
@@ -34,6 +34,5 @@ public class PlayerShoot : InputPlayer
     protected override void RotateCharacter(Vector3 moveDirection)
     {
         base.RotateCharacter(moveDirection.normalized);
-
     }
 }

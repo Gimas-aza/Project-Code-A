@@ -29,7 +29,7 @@ public class PlayerMove : InputPlayer
     private void FixedUpdate()
     {
         _drivingDirections = _actionMove.ReadValue<Vector2>();
-        _drivingDirections = new Vector3(-_drivingDirections.y, 0, _drivingDirections.x);
+        _drivingDirections = GetDirection(_drivingDirections);
 
         MoveCharacter(_drivingDirections);
         RotateCharacter(_drivingDirections);
