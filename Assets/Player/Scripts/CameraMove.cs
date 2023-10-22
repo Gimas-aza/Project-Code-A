@@ -15,7 +15,6 @@ public class CameraMove : MonoBehaviour
     private CinemachineFreeLook _cinemachineFreeLook;
     private float _targetCenterCamera = 0;
     private bool _isRotate = false;
-    private bool _isInverseRotate = false;
 
     private void Awake()
     {
@@ -38,20 +37,12 @@ public class CameraMove : MonoBehaviour
         {
             StartCoroutine(SmoothCenterСamera(_targetCenterCamera, _smoothing));
             _isRotate = false;
-            _isInverseRotate = false;
         }
     }
 
     private void SetСenterСamera()
     {
-        _targetCenterCamera = Math.Abs((int)_player.transform.eulerAngles.y - (int)_mainCamera.transform.eulerAngles.y);
-        if (_targetCenterCamera > 180)
-        {
-            Debug.Log((int)_mainCamera.transform.eulerAngles.y + "  " + (int)_player.transform.eulerAngles.y);
-            _targetCenterCamera = 360 - _targetCenterCamera;
-            Debug.Log(_targetCenterCamera);
-            _isInverseRotate = true;
-        }
+        _targetCenterCamera = Math.Abs(_player.transform.eulerAngles.y - _mainCamera.transform.eulerAngles.y);
         _isRotate = true;
     }
 
@@ -61,21 +52,10 @@ public class CameraMove : MonoBehaviour
 
         for (int i = 0; i < (int)target / smooth; i++)
         {
-            if (_isInverseRotate)
-            {
-                if (_player.transform.eulerAngles.y < currentRotateCamera)
-                    _cinemachineFreeLook.m_XAxis.Value = +smooth;
-                else if (_player.transform.eulerAngles.y > currentRotateCamera)
-                    _cinemachineFreeLook.m_XAxis.Value = -smooth;
-                Debug.Log("1 " + currentRotateCamera + "  " + _player.transform.eulerAngles.y);
-            }
-            else
-            {
-                if (_player.transform.eulerAngles.y < currentRotateCamera)
-                    _cinemachineFreeLook.m_XAxis.Value -= smooth;
-                else if (_player.transform.eulerAngles.y > currentRotateCamera)
-                    _cinemachineFreeLook.m_XAxis.Value += smooth;
-            }
+            if (_player.transform.eulerAngles.y < currentRotateCamera)
+                _cinemachineFreeLook.m_XAxis.Value -= smooth;
+            else if (_player.transform.eulerAngles.y > currentRotateCamera)
+                _cinemachineFreeLook.m_XAxis.Value += smooth;
             
             yield return new WaitForEndOfFrame();
         }
