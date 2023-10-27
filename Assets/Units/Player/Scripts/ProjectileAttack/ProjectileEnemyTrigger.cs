@@ -19,7 +19,7 @@ namespace Assets.Units.Player.ProjectileAttack
         {
             if (other.TryGetComponent(out EnemyUnit enemyUnit))
             {
-                if (enemyUnit.IsAlive() == false)
+                if (!enemyUnit.IsAlive())
                     return;
 
                 enemyUnit.ApplyDamage(_projectile.Damage);

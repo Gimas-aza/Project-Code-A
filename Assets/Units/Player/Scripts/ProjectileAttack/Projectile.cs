@@ -14,6 +14,8 @@ namespace Assets.Units.Player.ProjectileAttack
 
         [Header("Rigidbody")]
         [SerializeField] private Rigidbody _projectileRigidbody;
+        [Header("Fly Effect")]
+        [SerializeField] private TrailRenderer _flyEffect;
 
         [Header("Effect On Destroy")]
         [SerializeField] private bool _spawnEffectOnDestroy = true;
@@ -58,9 +60,9 @@ namespace Assets.Units.Player.ProjectileAttack
             
             SpawnEffectOnDestroy();
 
-            Destroy(gameObject);
+            Reset();
             
-            IsProjectileDisposed = true;
+            // IsProjectileDisposed = true;
         }
 
         private void SpawnEffectOnDestroy()
@@ -71,6 +73,21 @@ namespace Assets.Units.Player.ProjectileAttack
             var effect = Instantiate(_effectOnDestroyPrefab, transform.position, _effectOnDestroyPrefab.transform.rotation);
             
             Destroy(effect.gameObject, _effectOnDestroyLifetime);
+        }
+
+        public void Reset()
+        {
+            // IsProjectileDisposed = false;
+
+            gameObject.SetActive(false);
+            _flyEffect.Clear();
+            ResetRigidbody();
+        }
+
+        private void ResetRigidbody()
+        {
+            _projectileRigidbody.velocity = Vector3.zero;
+            _projectileRigidbody.angularVelocity = Vector3.zero;
         }
 
         protected virtual void OnProjectileDispose() { }

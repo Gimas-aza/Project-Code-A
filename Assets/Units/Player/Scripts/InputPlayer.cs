@@ -2,14 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Zenject;
 
 public class InputPlayer : MonoBehaviour
 {
     [Header("Rotation")]
     [SerializeField] private float _speedRotate;
-    [SerializeField] protected Camera MainCamera;
 
     protected InputSystem InputSystem;
+    protected Camera MainCamera;
+
+    [Inject]
+    private void Constructor(Camera mainCamera)
+    {
+        MainCamera = mainCamera;
+    }
 
     protected virtual void Awake()
     {
