@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using Assets.Units.Player.Interfaces;
+using Assets.Units.Interfaces;
 // using NTC.OverlapSugar;
 using UnityEngine;
 
-namespace Assets.Units.Player.ProjectileAttack
+namespace Assets.Units.ProjectileAttack
 {
     public class ExplosiveProjectile : Projectile
     {

@@ -1,12 +1,12 @@
 ﻿using System;
-using Assets.Units.Player.Interfaces;
+using Assets.Units.Interfaces;
 using UnityEngine;
 
 namespace Assets.Units
 {
     public abstract class Unit : MonoBehaviour, IDamageable
     {
-        private float _health = 100f;
+        [SerializeField] private float _health = 100f;
 
         public float Health
         {

@@ -1,8 +1,8 @@
 ﻿using Assets.Units.Enemies;
-using Assets.Units.Player.Interfaces;
+using Assets.Units.Interfaces;
 using UnityEngine;
 
-namespace Assets.Units.Player.ProjectileAttack
+namespace Assets.Units.ProjectileAttack
 {
     [SelectionBase]
     [RequireComponent(typeof(Rigidbody))]

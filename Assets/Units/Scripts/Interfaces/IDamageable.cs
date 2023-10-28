@@ -1,4 +1,4 @@
-﻿namespace Assets.Units.Player.Interfaces
+﻿namespace Assets.Units.Interfaces
 {
     public interface IDamageable
     {

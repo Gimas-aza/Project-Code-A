@@ -1,8 +1,8 @@
-using Assets.Units.Player.Base;
 using UnityEngine;
-using Zenject;
+using Assets.Units.Base;
+using Assets.ObjectPool;
 
-namespace Assets.Units.Player.ProjectileAttack
+namespace Assets.Units.ProjectileAttack
 {
     public class ProjectileAttackWeapon : AttackBehaviour
     {
@@ -18,14 +18,9 @@ namespace Assets.Units.Player.ProjectileAttack
         private float _time;
         private BulletPool _bulletPool;
 
-        [Inject]
-        private void Constructor(BulletPool bulletPool)
+        public void Init(BulletPool bulletPool)
         {
             _bulletPool = bulletPool;
-        }
-
-        private void Start()
-        {
             _bulletPool.Create(this, _projectilePrefab, _numberProjectile);
         }
 

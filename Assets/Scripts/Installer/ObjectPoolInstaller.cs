@@ -1,4 +1,5 @@
 using UnityEngine;
+using Assets.ObjectPool;
 using Zenject;
 
 public class ObjectPoolInstaller : MonoInstaller
@@ -14,6 +15,6 @@ public class ObjectPoolInstaller : MonoInstaller
             .Bind<BulletPool>()
             .FromComponentInHierarchy()
             .AsSingle()
-            .NonLazy();
+            .Lazy();
     }
 }

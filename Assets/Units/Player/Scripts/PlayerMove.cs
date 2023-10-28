@@ -1,46 +1,49 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(CharacterController))]
-public class PlayerMove : InputPlayer
+namespace Assets.Units.Player
 {
-    [Header("Moveming")]
-    [SerializeField] private float _speedMove;
-
-    private InputAction _actionMove;
-    private Vector3 _drivingDirections = Vector3.zero;
-    private CharacterController _controller;
-
-    protected override void Awake()
+    [RequireComponent(typeof(CharacterController))]
+    public class PlayerMove : InputPlayer
     {
-        base.Awake();
-        _controller = GetComponent<CharacterController>();
-        _actionMove = InputSystem.Player.Move;
-    }
+        [Header("Moveming")]
+        [SerializeField] private float _speedMove;
 
-    protected override void OnEnable()
-    {
-        base.OnEnable();
-        _controller.enabled = true;
-    }
+        private InputAction _actionMove;
+        private Vector3 _drivingDirections = Vector3.zero;
+        private CharacterController _controller;
 
-    protected override void OnDisable()
-    {
-        base.OnDisable();
-        _controller.enabled = false;
-    }
+        protected override void Awake()
+        {
+            base.Awake();
+            _controller = GetComponent<CharacterController>();
+            _actionMove = InputSystem.Player.Move;
+        }
 
-    private void FixedUpdate()
-    {
-        _drivingDirections = _actionMove.ReadValue<Vector2>();
-        _drivingDirections = GetDirection(_drivingDirections);
+        protected override void OnEnable()
+        {
+            base.OnEnable();
+            _controller.enabled = true;
+        }
 
-        MoveCharacter(_drivingDirections);
-        RotateCharacter(_drivingDirections);
-    }
+        protected override void OnDisable()
+        {
+            base.OnDisable();
+            _controller.enabled = false;
+        }
 
-    private void MoveCharacter(Vector3 moveDirection)
-    {
-        _controller.Move(moveDirection * _speedMove * Time.deltaTime);
+        private void FixedUpdate()
+        {
+            _drivingDirections = _actionMove.ReadValue<Vector2>();
+            _drivingDirections = GetDirection(_drivingDirections);
+
+            MoveCharacter(_drivingDirections);
+            RotateCharacter(_drivingDirections);
+        }
+
+        private void MoveCharacter(Vector3 moveDirection)
+        {
+            _controller.Move(moveDirection * _speedMove * Time.deltaTime);
+        }
     }
 }

@@ -1,75 +1,77 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using Cinemachine;
 using UnityEngine.InputSystem;
 
-public class CameraMove : InputPlayer
+namespace Assets.Units.Player
 {
-    [Header("Follow")]
-    [SerializeField] private Transform _player;
-    [SerializeField] private float _smoothing = 5;
-
-    private InputSystem _inputSystem;
-    private InputAction _actionMove;
-    private CinemachineFreeLook _cinemachineFreeLook;
-    private float _targetCenterCamera = 0;
-    private bool _isInverseRotate = false;
-
-    protected override void Awake()
+    public class CameraMove : InputPlayer
     {
-        base.Awake();
-        _cinemachineFreeLook = GetComponent<CinemachineFreeLook>();
-    }
+        [Header("Follow")]
+        [SerializeField] private Transform _player;
+        [SerializeField] private float _smoothing = 5;
 
-    protected override void OnEnable()
-    {
-        base.OnEnable();
-        InputSystem.Player.CenterCamera.performed += SetСenterСamera;
-    }
+        private InputSystem _inputSystem;
+        private InputAction _actionMove;
+        private CinemachineFreeLook _cinemachineFreeLook;
+        private float _targetCenterCamera = 0;
+        private bool _isInverseRotate = false;
 
-    protected override void OnDisable()
-    {
-        base.OnDisable();
-        InputSystem.Player.CenterCamera.performed -= SetСenterСamera;
-    }
-
-    private void SetСenterСamera(InputAction.CallbackContext context)
-    {
-        _targetCenterCamera = Math.Abs((int)_player.transform.eulerAngles.y - (int)MainCamera.transform.eulerAngles.y);
-        if (_targetCenterCamera > 180)
+        protected override void Awake()
         {
-            _targetCenterCamera = 360 - _targetCenterCamera;
-            _isInverseRotate = true;
+            base.Awake();
+            _cinemachineFreeLook = GetComponent<CinemachineFreeLook>();
         }
 
-        StartCoroutine(SmoothCenterСamera(_targetCenterCamera, _smoothing));
-        _isInverseRotate = false;
-    }
-
-    private IEnumerator<WaitForEndOfFrame> SmoothCenterСamera(float target, float smooth)
-    {
-        float currentRotateCamera = MainCamera.transform.eulerAngles.y;
-        float currentRotatePlayer = _player.transform.eulerAngles.y;
-
-        if (_isInverseRotate)
+        protected override void OnEnable()
         {
-            currentRotateCamera = (currentRotateCamera > 180) ? currentRotateCamera - 360 : currentRotateCamera;
-            currentRotatePlayer = (currentRotatePlayer > 180) ? currentRotatePlayer - 360 : currentRotatePlayer;
+            base.OnEnable();
+            InputSystem.Player.CenterCamera.performed += SetСenterСamera;
         }
 
-        for (int i = 0; i < (int)target / smooth; i++)
+        protected override void OnDisable()
         {
-            float direction = _isInverseRotate ? -1 : 1;
-            if (currentRotatePlayer < currentRotateCamera)
-                _cinemachineFreeLook.m_XAxis.Value -= direction * smooth;
-            else if (currentRotatePlayer > currentRotateCamera)
-                _cinemachineFreeLook.m_XAxis.Value += direction * smooth;
-            
-            yield return new WaitForEndOfFrame();
+            base.OnDisable();
+            InputSystem.Player.CenterCamera.performed -= SetСenterСamera;
         }
 
-        _cinemachineFreeLook.m_XAxis.Value = _player.transform.eulerAngles.y - MainCamera.transform.eulerAngles.y;
+        private void SetСenterСamera(InputAction.CallbackContext context)
+        {
+            _targetCenterCamera = Math.Abs((int)_player.transform.eulerAngles.y - (int)MainCamera.transform.eulerAngles.y);
+            if (_targetCenterCamera > 180)
+            {
+                _targetCenterCamera = 360 - _targetCenterCamera;
+                _isInverseRotate = true;
+            }
+
+            StartCoroutine(SmoothCenterСamera(_targetCenterCamera, _smoothing));
+            _isInverseRotate = false;
+        }
+
+        private IEnumerator<WaitForEndOfFrame> SmoothCenterСamera(float target, float smooth)
+        {
+            float currentRotateCamera = MainCamera.transform.eulerAngles.y;
+            float currentRotatePlayer = _player.transform.eulerAngles.y;
+
+            if (_isInverseRotate)
+            {
+                currentRotateCamera = (currentRotateCamera > 180) ? currentRotateCamera - 360 : currentRotateCamera;
+                currentRotatePlayer = (currentRotatePlayer > 180) ? currentRotatePlayer - 360 : currentRotatePlayer;
+            }
+
+            for (int i = 0; i < (int)target / smooth; i++)
+            {
+                float direction = _isInverseRotate ? -1 : 1;
+                if (currentRotatePlayer < currentRotateCamera)
+                    _cinemachineFreeLook.m_XAxis.Value -= direction * smooth;
+                else if (currentRotatePlayer > currentRotateCamera)
+                    _cinemachineFreeLook.m_XAxis.Value += direction * smooth;
+                
+                yield return new WaitForEndOfFrame();
+            }
+
+            _cinemachineFreeLook.m_XAxis.Value = _player.transform.eulerAngles.y - MainCamera.transform.eulerAngles.y;
+        }
     }
 }

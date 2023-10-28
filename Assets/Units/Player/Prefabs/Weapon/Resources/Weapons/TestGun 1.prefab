@@ -4899,7 +4899,7 @@ GameObject:
   - component: {fileID: 4432559748360014462}
   - component: {fileID: 7894171402880283598}
   m_Layer: 7
-  m_Name: TestGun
+  m_Name: TestGun 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4939,9 +4939,9 @@ MonoBehaviour:
   _projectilePrefab: {fileID: 6934365160915032090, guid: 4bdbf23cc9d1a619d973afb9d2f990cb, type: 3}
   _numberProjectile: 20
   _forceMode: 1
-  _force: 50
-  _cooldown: 0.2
-  _spreadRange: 3
+  _force: 30
+  _cooldown: 0.4
+  _spreadRange: 4
   _muzzleFlash: {fileID: 3178537307520331935}
 --- !u!1 &6298023099423721304
 GameObject:
@@ -10008,8 +10008,8 @@ Transform:
   m_GameObject: {fileID: 8788706534426625341}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2193, y: 0.23425935, z: 1.1113}
+  m_LocalPosition: {x: 0, y: 0.0834, z: 0}
+  m_LocalScale: {x: 0.2193, y: 0.40100515, z: 1.1113}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4432559748360014462}

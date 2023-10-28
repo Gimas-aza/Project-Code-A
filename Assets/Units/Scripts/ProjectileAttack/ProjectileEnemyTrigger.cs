@@ -2,7 +2,7 @@
 using Assets.Units;
 using UnityEngine;
 
-namespace Assets.Units.Player.ProjectileAttack
+namespace Assets.Units.ProjectileAttack
 {
     [RequireComponent(typeof(Collider))]
     public class ProjectileEnemyTrigger : MonoBehaviour

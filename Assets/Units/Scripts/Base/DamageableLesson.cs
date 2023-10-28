@@ -1,7 +1,7 @@
-﻿using Assets.Units.Player.Interfaces;
+﻿using Assets.Units.Interfaces;
 using UnityEngine;
 
-namespace Assets.Units.Player.Base
+namespace Assets.Units.Base
 {
     public class DamageableLesson : MonoBehaviour, IDamageable
     {

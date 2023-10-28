@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Units.Player.Base
+namespace Assets.Units.Base
 {
     public abstract class AttackBehaviour : MonoBehaviour
     {

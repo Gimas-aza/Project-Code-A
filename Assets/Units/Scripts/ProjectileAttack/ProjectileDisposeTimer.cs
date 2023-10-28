@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Units.Player.ProjectileAttack
+namespace Assets.Units.ProjectileAttack
 {
     [RequireComponent(typeof(Projectile))]
     public class ProjectileDisposeTimer : MonoBehaviour
