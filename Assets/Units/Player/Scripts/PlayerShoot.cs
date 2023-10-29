@@ -1,7 +1,5 @@
 using System;
-using System.Collections.Generic;
 using Assets.Units.Base;
-using Assets.Units.ProjectileAttack;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
