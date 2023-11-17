@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,6 +16,11 @@ namespace Assets.UI
 
         private bool _isCritical = true;
 
+        private void Start()
+        {
+            ClearConsoleText();
+        }
+
         private void OnValidate()
         {
             ChangeHealth(_healthInt, 100f);
@@ -28,12 +31,12 @@ namespace Assets.UI
         {
             if (CheckedValues(health, maxHealth)) return;
 
-            if (health < 10 && _isCritical)
+            if (health <= 10 && _isCritical)
             {
                 PrintConsoleText("Критические покозатели здоровья!");
                 _isCritical = false;
             }
-            else if (health > 15)
+            else if (health >= 15)
             {
                 ClearOldRecords();
                 _isCritical = true;
@@ -53,6 +56,11 @@ namespace Assets.UI
         public void PrintConsoleText(string text)
         {
             _consoleText.text += "Log: " + text + "\n";
+        }
+
+        public void ClearConsoleText()
+        {
+            _consoleText.text = "";
         }
 
         private void ClearOldRecords(int length = 170)
