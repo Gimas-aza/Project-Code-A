@@ -19,19 +19,11 @@ namespace Assets.Units.FSM
             _pursueDistance = pursueDistance;
         }
 
-        public override void Enter()
-        {
-        }
-
-        public override void Exit()
-        {
-        }
-
         public override void Update()
         {
             if (Vector3.Distance(_player.transform.position, _unit.position) < _pursueDistance)
             {
-                _fsm.SetState<FsmStateMove>();
+                _fsm.SetState<FsmStateMoveAndAttack>();
             }
         }
     }
