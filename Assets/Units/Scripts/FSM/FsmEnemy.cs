@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Assets.Units.Base;
 using UnityEngine;
 using UnityEngine.AI;
@@ -9,12 +10,16 @@ namespace Assets.Units.FSM
     {
         [SerializeField] private NavMeshAgent _navMeshAgent;
         [SerializeField] private AttackBehaviour _attackBehaviour;
+        [SerializeField] private Light _fieldOFView;
         [Header("Attack Settings")]
         [SerializeField] private Transform _pointAttack;
         [SerializeField, Min(0f)] private float _cooldown;
         [Header("Distances setting")]
-        [SerializeField] private float _pursueDistance;
-        [SerializeField] private float _attackDistance;
+        [SerializeField] private float _fov = 90f;
+        [SerializeField] private float _viewDistance = 50f;
+        [Header("Walk")]
+        [SerializeField] private List<Vector3> _waypointList;
+        [SerializeField] private List<float> _waitTimeList;
         
         private Fsm _fsm;
         private PlayerUnit _player;
@@ -35,11 +40,13 @@ namespace Assets.Units.FSM
         {
             _fsm = new Fsm();
 
-            _fsm.AddState(new FsmStateIdle(_fsm, _player, transform, _pursueDistance));
-            _fsm.AddState(new FsmStateMoveAndAttack(_fsm, _player, _attackBehaviour, 
-                            _cooldown, _navMeshAgent, _pursueDistance));
+            _fsm.AddState(new FsmStateWalk(_fsm, _player, transform, 
+                            _navMeshAgent, _fieldOFView, _viewDistance, _fov, 
+                            _waypointList, _waitTimeList));
+            _fsm.AddState(new FsmStateAttack(_fsm, _player, _attackBehaviour, 
+                            _cooldown, _navMeshAgent, _viewDistance, _fieldOFView));
 
-            _fsm.SetState<FsmStateIdle>(); 
+            _fsm.SetState<FsmStateWalk>(); 
         }
 
         private void Update()

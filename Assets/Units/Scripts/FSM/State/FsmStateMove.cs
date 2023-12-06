@@ -45,7 +45,7 @@ namespace Assets.Units.FSM
             }
             else if (Vector3.Distance(_player.transform.position, _navMeshAgent.transform.position) > _pursueDistance)
             {
-                _fsm.SetState<FsmStateIdle>();
+                _fsm.SetState<FsmStateWalk>();
             }
         }
     }

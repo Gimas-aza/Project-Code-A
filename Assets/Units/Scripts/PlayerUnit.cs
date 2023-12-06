@@ -1,7 +1,7 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using Zenject;
 using Assets.UI;
+using Assets.Units.Player;
 
 namespace Assets.Units
 {
@@ -11,6 +11,7 @@ namespace Assets.Units
         [SerializeField] private float _actionPoints = 100f;
 
         private VitalityMonitor _vitalityMonitor;
+        private PlayerMove _playerMove;
 
         public float MaxActionPoints
         {
@@ -24,6 +25,8 @@ namespace Assets.Units
             set => _actionPoints = Mathf.Clamp(value, 0f, MaxActionPoints);
         }
 
+        public bool IsStealth { get; private set; } = false;
+
         [Inject]
         private void Constructor(VitalityMonitor vitalityMonitor)
         {
@@ -32,6 +35,7 @@ namespace Assets.Units
 
         private void Start()
         {
+            _playerMove ??= GetComponent<PlayerMove>();
             _vitalityMonitor.ChangeHealth((int) Health, MaxHealth);
             _vitalityMonitor.ChangeActionPoints((int) ActionPoints, MaxActionPoints);
         }
@@ -40,6 +44,12 @@ namespace Assets.Units
         {
             base.ApplyDamage(damage);
             _vitalityMonitor.ChangeHealth((int) Health, MaxHealth);
+        }
+
+        public void ActivateStealth()
+        {
+            IsStealth = !IsStealth;
+            _playerMove?.LesserSpeed(IsStealth);
         }
     }
 }

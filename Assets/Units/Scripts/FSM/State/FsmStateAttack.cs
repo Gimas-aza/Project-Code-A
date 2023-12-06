@@ -1,6 +1,7 @@
-using UnityEngine;
-using Assets.Units;
+using System;
 using Assets.Units.Base;
+using UnityEngine;
+using UnityEngine.AI;
 
 namespace Assets.Units.FSM
 {
@@ -8,37 +9,57 @@ namespace Assets.Units.FSM
     {
         private Fsm _fsm;
         private PlayerUnit _player;
-        private float _attackDistance;
+        private NavMeshAgent _navMeshAgent;
+        private float _pursueDistance;
         private AttackBehaviour _attackBehaviour;
-        private Transform _pointAttack;
         private float _cooldown;
         private float _time;
+        private Light _fieldOFView;
 
         public FsmStateAttack(Fsm fsm, PlayerUnit player,
-                float attackDistance, AttackBehaviour attackBehaviour, float cooldown,
-                Transform pointAttack) : base(fsm)
+                AttackBehaviour attackBehaviour, float cooldown,
+                NavMeshAgent navMeshAgent, float pursueDistance, 
+                Light fieldOFView) : base(fsm)
         {
             _fsm = fsm;
             _player = player;
-            _attackDistance = attackDistance;
             _attackBehaviour = attackBehaviour;
-            _pointAttack = pointAttack;
             _cooldown = cooldown;
+            _navMeshAgent = navMeshAgent;
+            _pursueDistance = pursueDistance;
+            _fieldOFView = fieldOFView;
         }
 
         public override void Enter()
         {
             _time = 0;
+            _navMeshAgent.isStopped = false;
+            _fieldOFView.enabled = false;
+        }
+
+        public override void Exit()
+        {
+            _navMeshAgent.isStopped = true;
         }
 
         public override void Update()
         {
-            if (Vector3.Distance(_player.transform.position, _pointAttack.position) > _attackDistance)
+            if (Vector3.Distance(_player.transform.position, _navMeshAgent.transform.position) > _pursueDistance)
             {
-                _fsm.SetState<FsmStateMove>();
-                return;
+                _fsm.SetState<FsmStateWalk>();
             }
-            
+
+            Move();
+            Attack();
+        }
+
+        private void Move()
+        {
+            _navMeshAgent.SetDestination(_player.transform.position);
+        }
+
+        private void Attack()
+        {            
             _time += Time.deltaTime;
             if (_cooldown <= _time)
             {

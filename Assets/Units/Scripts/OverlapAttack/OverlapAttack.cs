@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Assets.Units.Base;
 using Assets.Units.Enemies;
 using Assets.Units.Interfaces;

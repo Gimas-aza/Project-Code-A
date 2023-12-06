@@ -9,6 +9,8 @@ namespace Assets.Units.Player
         [Header("Moveming")]
         [SerializeField] private float _speedMove;
 
+        private float _beginSpeedMove;
+        private float _multiplierSpeed = 1.2f;
         private InputAction _actionMove;
         private Vector3 _drivingDirections = Vector3.zero;
         private CharacterController _controller;
@@ -16,6 +18,7 @@ namespace Assets.Units.Player
         protected override void Awake()
         {
             base.Awake();
+            _beginSpeedMove = _speedMove;
             _controller = GetComponent<CharacterController>();
             _actionMove = InputSystem.Player.Move;
         }
@@ -44,6 +47,14 @@ namespace Assets.Units.Player
         private void MoveCharacter(Vector3 moveDirection)
         {
             _controller.Move(moveDirection * _speedMove * Time.deltaTime);
+        }
+
+        public void LesserSpeed(bool isActive)
+        {
+            if (isActive)
+                _speedMove = _beginSpeedMove / _multiplierSpeed;
+            else
+                _speedMove = _beginSpeedMove;
         }
     }
 }

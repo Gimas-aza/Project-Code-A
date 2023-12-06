@@ -1,6 +1,7 @@
 ﻿using System;
 using Assets.Units.Interfaces;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Assets.Units
 {
@@ -20,6 +21,7 @@ namespace Assets.Units
             get => _health;
             set => _health = Mathf.Clamp(value, 0f, MaxHealth);
         }
+        public UnityAction OnDamageTaken { get; set; }
 
         public bool IsAlive()
         {
@@ -32,7 +34,7 @@ namespace Assets.Units
                 throw new ArgumentOutOfRangeException(nameof(damage));
             
             Health -= damage;
-            Debug.Log(Health);
+            OnDamageTaken?.Invoke();
 
             if (!IsAlive())
                 Destroy(gameObject);

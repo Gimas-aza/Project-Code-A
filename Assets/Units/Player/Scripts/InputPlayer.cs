@@ -7,7 +7,7 @@ namespace Assets.Units.Player
     public class InputPlayer : MonoBehaviour
     {
         [Header("Rotation")]
-        [SerializeField] private float _speedRotate;
+        [SerializeField] public float _speedRotate;
 
         protected InputSystem InputSystem;
         protected Camera MainCamera;
