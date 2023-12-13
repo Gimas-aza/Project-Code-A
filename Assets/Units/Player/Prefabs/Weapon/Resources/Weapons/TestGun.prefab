@@ -4940,7 +4940,7 @@ MonoBehaviour:
   _numberProjectile: 20
   _forceMode: 1
   _force: 50
-  _cooldown: 0.2
+  _cooldown: 0.5
   _spreadRange: 3
   _muzzleFlash: {fileID: 3178537307520331935}
 --- !u!1 &6298023099423721304

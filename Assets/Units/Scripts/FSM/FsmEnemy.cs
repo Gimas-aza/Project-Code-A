@@ -12,7 +12,6 @@ namespace Assets.Units.FSM
         [SerializeField] private AttackBehaviour _attackBehaviour;
         [SerializeField] private Light _fieldOFView;
         [Header("Attack Settings")]
-        [SerializeField] private Transform _pointAttack;
         [SerializeField, Min(0f)] private float _cooldown;
         [Header("Distances setting")]
         [SerializeField] private float _fov = 90f;

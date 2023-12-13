@@ -15,13 +15,14 @@ namespace Assets.Units
             get => _maxHealth;
             set => _maxHealth = Mathf.Clamp(value, 0f, int.MaxValue);
         }
-
         public float Health
         {
             get => _health;
             set => _health = Mathf.Clamp(value, 0f, MaxHealth);
         }
         public UnityAction OnDamageTaken { get; set; }
+
+        public bool IsIncreaseDamage = false;
 
         public bool IsAlive()
         {
@@ -33,7 +34,10 @@ namespace Assets.Units
             if (damage < 0f)
                 throw new ArgumentOutOfRangeException(nameof(damage));
             
+            damage = IsIncreaseDamage ? damage * 2 : damage;
+            
             Health -= damage;
+            Debug.Log($"Health: {Health}");
             OnDamageTaken?.Invoke();
 
             if (!IsAlive())

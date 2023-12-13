@@ -33,13 +33,13 @@ namespace Assets.Units.FSM
         public override void Enter()
         {
             _time = 0;
-            _navMeshAgent.isStopped = false;
+            _navMeshAgent.stoppingDistance = 4.5f;
             _fieldOFView.enabled = false;
         }
 
         public override void Exit()
         {
-            _navMeshAgent.isStopped = true;
+            _navMeshAgent.stoppingDistance = 0;
         }
 
         public override void Update()

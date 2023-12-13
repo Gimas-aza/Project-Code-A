@@ -4936,7 +4936,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsAccessToAttack: 1
   _weaponMuzzle: {fileID: 6402481285226387051}
-  _projectilePrefab: {fileID: 6934365160915032090, guid: 4bdbf23cc9d1a619d973afb9d2f990cb, type: 3}
+  _projectilePrefab: {fileID: 6934365160915032090, guid: 4a4a3b7f26b96c64c88c79f3d70f10ae, type: 3}
   _numberProjectile: 20
   _forceMode: 1
   _force: 30

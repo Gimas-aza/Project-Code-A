@@ -10,10 +10,12 @@ namespace Assets.Units.Player
         [SerializeField] private float _speedMove;
 
         private float _beginSpeedMove;
-        private float _multiplierSpeed = 1.2f;
+        private float _multiplierSpeed = 1.5f;
         private InputAction _actionMove;
         private Vector3 _drivingDirections = Vector3.zero;
         private CharacterController _controller;
+
+        public bool IsMove { get; private set; } = false;
 
         protected override void Awake()
         {
@@ -47,6 +49,10 @@ namespace Assets.Units.Player
         private void MoveCharacter(Vector3 moveDirection)
         {
             _controller.Move(moveDirection * _speedMove * Time.deltaTime);
+            
+            IsMove = false;
+            if (moveDirection != Vector3.zero)
+                IsMove = true;
         }
 
         public void LesserSpeed(bool isActive)

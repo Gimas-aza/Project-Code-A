@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Assets.Units.Player;
-using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Assets.Units.Player
