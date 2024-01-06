@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 6934365160915032090}
   - component: {fileID: 8974850882430098209}
   m_Layer: 6
-  m_Name: Bullet
+  m_Name: Bullet 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -241,7 +241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a0185ddf8cdacb44ac29a182f776203, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 20
+  _damage: 25
   _disposeType: 0
   _projectileRigidbody: {fileID: 109381255109655855}
   _flyEffect: {fileID: 3285167827997254251}

@@ -8,6 +8,7 @@ namespace Assets.Units.Player
     {
         [Header("Moveming")]
         [SerializeField] private float _speedMove;
+        [SerializeField] private float _speedRotate;
 
         private float _beginSpeedMove;
         private float _multiplierSpeed = 1.5f;
@@ -20,6 +21,7 @@ namespace Assets.Units.Player
         protected override void Awake()
         {
             base.Awake();
+            SpeedRotate = _speedRotate;
             _beginSpeedMove = _speedMove;
             _controller = GetComponent<CharacterController>();
             _actionMove = InputSystem.Player.Move;

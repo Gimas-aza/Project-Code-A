@@ -106,6 +106,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &788919545832762248
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2857476887081470220}
+  m_Layer: 10
+  m_Name: StartOverlap
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2857476887081470220
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788919545832762248}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5111462546437565413}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &955445021092894398
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,6 +289,7 @@ GameObject:
   - component: {fileID: 6710881031579065916}
   - component: {fileID: 7751624087563090388}
   - component: {fileID: 8667351469918249910}
+  - component: {fileID: 2478139806253254742}
   - component: {fileID: 8279038641032322006}
   m_Layer: 0
   m_Name: Enemy01
@@ -280,6 +312,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4227754174555804909}
+  - {fileID: 2857476887081470220}
   - {fileID: 2223631928674009131}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -342,6 +375,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 100
   _health: 100
+  IsIncreaseDamage: 0
   _enemyUnitType: 1
 --- !u!114 &8667351469918249910
 MonoBehaviour:
@@ -357,8 +391,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _navMeshAgent: {fileID: 3254692705014707466}
   _attackBehaviour: {fileID: 8279038641032322006}
+  _overlapAllies: {fileID: 2478139806253254742}
   _fieldOFView: {fileID: 3576948276147345784}
-  _pointAttack: {fileID: 2223631928674009131}
   _cooldown: 0.5
   _fov: 60
   _viewDistance: 30
@@ -372,6 +406,32 @@ MonoBehaviour:
   - 4
   - 4
   - 4
+--- !u!114 &2478139806253254742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4176222139199750515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb4fa48088e932144a0aedf5b782bbc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _searchLayerMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  _obstacleLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  _overlapStartPoint: {fileID: 0}
+  _overlapType: 1
+  _offset: {x: 0, y: 0, z: 0}
+  _boxSize: {x: 1, y: 1, z: 1}
+  _sphereRadius: 1
+  _considerObstacles: 1
+  _drawGizmosType: 0
+  _gizmosColor: {r: 0, g: 1, b: 1, a: 1}
 --- !u!114 &8279038641032322006
 MonoBehaviour:
   m_ObjectHideFlags: 0

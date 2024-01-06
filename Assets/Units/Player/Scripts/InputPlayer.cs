@@ -6,9 +6,7 @@ namespace Assets.Units.Player
 {
     public class InputPlayer : MonoBehaviour
     {
-        [Header("Rotation")]
-        [SerializeField] public float _speedRotate;
-
+        protected float SpeedRotate = 0.2f;
         protected InputSystem InputSystem;
         protected Camera MainCamera;
 
@@ -47,7 +45,7 @@ namespace Assets.Units.Player
         {
             if (Vector3.Angle(transform.forward, moveDirection) > 0)
             {
-                Vector3 newDirection = Vector3.RotateTowards(transform.forward, moveDirection, _speedRotate, 0.0f);
+                Vector3 newDirection = Vector3.RotateTowards(transform.forward, moveDirection, SpeedRotate, 0.0f);
                 transform.rotation = Quaternion.LookRotation(newDirection);
             }
         }

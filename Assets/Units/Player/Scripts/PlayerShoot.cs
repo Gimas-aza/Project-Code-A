@@ -10,13 +10,16 @@ namespace Assets.Units.Player
     {
         [Header("Weapon")] 
         [SerializeField] private Weapons _weapons;
+        [SerializeField] private LaserPointer _laserPointer;
         [SerializeField] private int _maxIndex = 2;
         [SerializeField, Min(0)] private int _currentIndex;
+        [SerializeField] private float _speedRotate;
 
         private InputAction _actionShoot;
         private InputAction _actionSwitchWeapon;
         private Vector3 _drivingDirections = Vector3.zero;
         private AttackBehaviour _currentWeapon;
+        private Vector3 _directionShoot;
 
         private void OnValidate()
         {
@@ -32,6 +35,8 @@ namespace Assets.Units.Player
 
             _weapons.Init();
             _currentWeapon = _weapons.GetWeapon(_currentIndex);
+
+            SpeedRotate = _speedRotate;
         }
 
         protected override void OnEnable()
@@ -66,10 +71,26 @@ namespace Assets.Units.Player
         protected override void RotateCharacter(Vector3 moveDirection)
         {
             base.RotateCharacter(moveDirection);
-            if (moveDirection != Vector3.zero && _currentWeapon != null)
+            if (_currentWeapon == null)
+                return;
+
+            if (moveDirection != Vector3.zero)
+            {
+                _directionShoot = moveDirection;
+                _laserPointer.SetActivateLaser(true);
+            }
+            
+            if (moveDirection == Vector3.zero && _directionShoot != Vector3.zero)
             {
                 _currentWeapon.PerformAttack();
+                _directionShoot = Vector3.zero;
+                _laserPointer.SetActivateLaser(false);
             }
+
+            // if (moveDirection != Vector3.zero && _currentWeapon != null)
+            // {
+            //     _currentWeapon.PerformAttack();
+            // }
         }
     }
 }

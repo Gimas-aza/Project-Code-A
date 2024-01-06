@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using Assets.ObjectPool;
 using Assets.Units.Base;
+using Assets.Units.Enemies;
 using UnityEngine;
 using UnityEngine.AI;
 using Zenject;
@@ -10,6 +12,7 @@ namespace Assets.Units.FSM
     {
         [SerializeField] private NavMeshAgent _navMeshAgent;
         [SerializeField] private AttackBehaviour _attackBehaviour;
+        [SerializeField] private OverlapAllies _overlapAllies;
         [SerializeField] private Light _fieldOFView;
         [Header("Attack Settings")]
         [SerializeField, Min(0f)] private float _cooldown;
@@ -22,17 +25,20 @@ namespace Assets.Units.FSM
         
         private Fsm _fsm;
         private PlayerUnit _player;
+        private BulletPool _bulletPool;
 
         [Inject]
-        private void Consructor(PlayerUnit player)
+        private void Consructor(PlayerUnit player, BulletPool bulletPool)
         {
             _player = player;
+            _bulletPool = bulletPool;
         }
 
         private void OnValidate()
         {
             _navMeshAgent ??= GetComponent<NavMeshAgent>();
             _attackBehaviour ??= GetComponent<AttackBehaviour>();
+            _overlapAllies ??= GetComponent<OverlapAllies>();
         }
         
         private void Start()
@@ -43,7 +49,8 @@ namespace Assets.Units.FSM
                             _navMeshAgent, _fieldOFView, _viewDistance, _fov, 
                             _waypointList, _waitTimeList));
             _fsm.AddState(new FsmStateAttack(_fsm, _player, _attackBehaviour, 
-                            _cooldown, _navMeshAgent, _viewDistance, _fieldOFView));
+                            _cooldown, _navMeshAgent, _viewDistance, _fieldOFView,
+                            _bulletPool, _overlapAllies));
 
             _fsm.SetState<FsmStateWalk>(); 
         }
@@ -52,6 +59,10 @@ namespace Assets.Units.FSM
         {
             _fsm.Update();
         }
-    }
 
+        public void SetStateAttack()
+        {
+            _fsm.SetState<FsmStateAttack>();
+        }
+    }
 }

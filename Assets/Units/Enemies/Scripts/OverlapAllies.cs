@@ -1,17 +1,16 @@
 using System;
+using Assets.Units;
 using Assets.Units.Base;
 using Assets.Units.Enemies;
+using Assets.Units.FSM;
 using Assets.Units.Interfaces;
 using NTC.OverlapSugar;
 using UnityEngine;
 
-namespace Assets.Units.OverlapAttack 
+namespace Assets.Units.Enemies
 {
-    public class OverlapAttack : AttackBehaviour
+    public class OverlapAllies : MonoBehaviour
     {
-        [Header("Common")] 
-        [SerializeField, Min(0f)] private float _damage = 10f;
-        
         [Header("Masks")]
         [SerializeField] private LayerMask _searchLayerMask;
         [SerializeField] private LayerMask _obstacleLayerMask;
@@ -33,16 +32,15 @@ namespace Assets.Units.OverlapAttack
         private readonly Collider[] _overlapResults = new Collider[32];
         private int _overlapResultsCount;
 
-        [ContextMenu(nameof(PerformAttack))]
-        public override void PerformAttack()
+        public void AttackEnemies()
         {
-            if (TryFindEnemies())
+            if (TryFindAllies())
             {
-                TryAttackEnemies();
+                TryNotifyAllies();
             }
         }
 
-        private bool TryFindEnemies()
+        private bool TryFindAllies()
         {
             var position = _overlapStartPoint.TransformPoint(_offset);
             
@@ -68,11 +66,11 @@ namespace Assets.Units.OverlapAttack
             return Physics.OverlapSphereNonAlloc(position, _sphereRadius, _overlapResults, _searchLayerMask.value);
         }
 
-        private void TryAttackEnemies()
+        private void TryNotifyAllies()
         {
             for (int i = 0; i < _overlapResultsCount; i++)
             {
-                if (_overlapResults[i].TryGetComponent(out IDamageable damageable) == false)
+                if (_overlapResults[i].TryGetComponent(out FsmEnemy allie) == false)
                 {
                     continue;
                 }
@@ -89,12 +87,12 @@ namespace Assets.Units.OverlapAttack
                         continue;
                     }
                 }
-                    
-                damageable.ApplyDamage(_damage);
+                
+                allie.SetStateAttack();
             }
         }
         
-#if UNITY_EDITOR
+    #if UNITY_EDITOR
         private void OnDrawGizmos()
         {
             TryDrawGizmos(DrawGizmosType.Always);
@@ -124,6 +122,6 @@ namespace Assets.Units.OverlapAttack
                 default: throw new ArgumentOutOfRangeException(nameof(_overlapType));
             }
         }
-#endif
-    }
+    #endif
+    } 
 }

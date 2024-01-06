@@ -13,7 +13,7 @@ namespace Assets.Units.ProjectileAttack
         [SerializeField, Min(0f)] private float _force = 10f;
         [SerializeField] private float _cooldown;
         [SerializeField, Min(0)] private float _spreadRange;
-        [SerializeField] ParticleSystem _muzzleFlash;
+        [SerializeField] private ParticleSystem _muzzleFlash;
 
         private float _time;
         private BulletPool _bulletPool;

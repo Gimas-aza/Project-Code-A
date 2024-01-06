@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -119,7 +121,6 @@ namespace Assets.Units.FSM
                         if (player.IsStealth)
                         {
                             _detectionTimer -= Time.deltaTime;
-                            Debug.Log($"Detection timer: {_detectionTimer}");
                             if (_detectionTimer <= 0f)
                                 _fsm.SetState<FsmStateAttack>();
 
@@ -143,7 +144,7 @@ namespace Assets.Units.FSM
             _detectionTimer = _beginDetectionTimer;
         }
 
-        private void TryMoveLastPointPlayer()
+        private async void TryMoveLastPointPlayer()
         {
             if (!_player.IsStealth)
             {
@@ -152,9 +153,10 @@ namespace Assets.Units.FSM
             }
 
             SetView(_beginFov * 1.5f, _viewDistance);
-            _navMeshAgent.SetDestination(_player.transform.position);
-            _beginDetectionTimer = 1.5f;
+            _beginDetectionTimer = 1f;
             _waitTimer = _timeToReturnWalk;
+
+            await SetDestinationWithDelay(_player.transform.position, 1000);
         }
 
         private void SetView(float fov, float viewDistance)
@@ -162,6 +164,12 @@ namespace Assets.Units.FSM
             _fov = fov;
             _fieldOFView.spotAngle = fov;
             _fieldOFView.range = viewDistance;
+        }
+
+        private async Task SetDestinationWithDelay(Vector3 waypoint, int delay)
+        {
+            await Task.Delay(delay);
+            _navMeshAgent.SetDestination(waypoint);
         }
 
         public Vector3 GetAimDir() 

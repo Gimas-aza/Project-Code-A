@@ -71,6 +71,24 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Skills"",
+                    ""type"": ""Button"",
+                    ""id"": ""27332baf-2848-434a-9a32-2992fef4437d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Back"",
+                    ""type"": ""Button"",
+                    ""id"": ""21c4bddb-13dc-494a-976a-21d18fdc72ed"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -216,6 +234,61 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
                     ""action"": ""Stealth"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d98b73ee-e115-43e8-87f2-9948beb5a0e1"",
+                    ""path"": ""<Keyboard>/v"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Skills"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f4ee9b01-b1ee-42bd-8efd-907736173d34"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Skills"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9ef54ab3-0f6e-422d-ac43-6ba0520df30b"",
+                    ""path"": ""<Keyboard>/backspace"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Back"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b4d1a5a3-7589-4cb8-a5c7-5c0477af00d8"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Back"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""588d14ea-344f-48d3-b4cc-1241cb4bdb6c"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Back"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -256,6 +329,8 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
         m_Player_CenterCamera = m_Player.FindAction("CenterCamera", throwIfNotFound: true);
         m_Player_SwitchWeapon = m_Player.FindAction("SwitchWeapon", throwIfNotFound: true);
         m_Player_Stealth = m_Player.FindAction("Stealth", throwIfNotFound: true);
+        m_Player_Skills = m_Player.FindAction("Skills", throwIfNotFound: true);
+        m_Player_Back = m_Player.FindAction("Back", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -322,6 +397,8 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_CenterCamera;
     private readonly InputAction m_Player_SwitchWeapon;
     private readonly InputAction m_Player_Stealth;
+    private readonly InputAction m_Player_Skills;
+    private readonly InputAction m_Player_Back;
     public struct PlayerActions
     {
         private @InputSystem m_Wrapper;
@@ -331,6 +408,8 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
         public InputAction @CenterCamera => m_Wrapper.m_Player_CenterCamera;
         public InputAction @SwitchWeapon => m_Wrapper.m_Player_SwitchWeapon;
         public InputAction @Stealth => m_Wrapper.m_Player_Stealth;
+        public InputAction @Skills => m_Wrapper.m_Player_Skills;
+        public InputAction @Back => m_Wrapper.m_Player_Back;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -355,6 +434,12 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
             @Stealth.started += instance.OnStealth;
             @Stealth.performed += instance.OnStealth;
             @Stealth.canceled += instance.OnStealth;
+            @Skills.started += instance.OnSkills;
+            @Skills.performed += instance.OnSkills;
+            @Skills.canceled += instance.OnSkills;
+            @Back.started += instance.OnBack;
+            @Back.performed += instance.OnBack;
+            @Back.canceled += instance.OnBack;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -374,6 +459,12 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
             @Stealth.started -= instance.OnStealth;
             @Stealth.performed -= instance.OnStealth;
             @Stealth.canceled -= instance.OnStealth;
+            @Skills.started -= instance.OnSkills;
+            @Skills.performed -= instance.OnSkills;
+            @Skills.canceled -= instance.OnSkills;
+            @Back.started -= instance.OnBack;
+            @Back.performed -= instance.OnBack;
+            @Back.canceled -= instance.OnBack;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -407,5 +498,7 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
         void OnCenterCamera(InputAction.CallbackContext context);
         void OnSwitchWeapon(InputAction.CallbackContext context);
         void OnStealth(InputAction.CallbackContext context);
+        void OnSkills(InputAction.CallbackContext context);
+        void OnBack(InputAction.CallbackContext context);
     }
 }
