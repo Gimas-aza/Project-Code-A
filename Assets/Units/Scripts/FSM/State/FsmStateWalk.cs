@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AI;
@@ -22,25 +21,26 @@ namespace Assets.Units.FSM
         private Vector3 _lastMoveDir;
         private int _waypointIndex;
         private float _waitTimer;
-        private float _beginDetectionTimer = 2f;
+        private float _beginDetectionTimer;
         private float _detectionTimer; 
         private float _beginSpeed;
-        private float _multiplierSpeed = 3f;
-        private float _timeToReturnWalk = 7;
+        private float _multiplierSpeed;
+        private float _timeToReturnWalk;
 
-        public FsmStateWalk(Fsm fsm, PlayerUnit player, Transform unit, NavMeshAgent navMeshAgent, 
-                            Light fieldOfView, float viewDistance, float fov, 
-                            List<Vector3> waypointList, List<float> waitTimeList) : base(fsm)
+        public FsmStateWalk(Fsm fsm, FsmEnemyParams fsmEnemyParams) : base(fsm)
         {
             _fsm = fsm;
-            _player = player;
-            _unitTransform = unit;
-            _navMeshAgent = navMeshAgent;
-            _fieldOFView = fieldOfView;
-            _viewDistance = viewDistance;
-            _fov = fov;
-            _waypointList = waypointList;
-            _waitTimeList = waitTimeList;
+            _player = fsmEnemyParams.Player;
+            _unitTransform = fsmEnemyParams.UnitTransform;
+            _navMeshAgent = fsmEnemyParams.NavMeshAgent;
+            _fieldOFView = fsmEnemyParams.FieldOfView;
+            _viewDistance = fsmEnemyParams.ViewDistance;
+            _fov = fsmEnemyParams.Fov;
+            _waypointList = fsmEnemyParams.WaypointList;
+            _waitTimeList = fsmEnemyParams.WaitTimeList;
+            _beginDetectionTimer = fsmEnemyParams.BeginDetectionTimer;
+            _multiplierSpeed = fsmEnemyParams.MultiplierSpeed;
+            _timeToReturnWalk = fsmEnemyParams.TimeToReturnWalk;
         }
 
         public override void Enter()

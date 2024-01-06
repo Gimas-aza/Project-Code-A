@@ -837,7 +837,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 169507329}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.38743293, y: 0.05618192, z: -0.023662573, w: 0.91988015}
+  m_LocalRotation: {x: 0.38743293, y: 0.056181848, z: -0.023662528, w: 0.91988015}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1283,6 +1283,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4176546312612380300, guid: cfd3311072b88f54e9ce572aba51cf44, type: 3}
   m_PrefabInstance: {fileID: 1884974773}
+  m_PrefabAsset: {fileID: 0}
+--- !u!108 &207750045 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 3576948276147345784, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+  m_PrefabInstance: {fileID: 1693715413}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &210039740
 PrefabInstance:
@@ -2324,6 +2329,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 4176222139199750515, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4485223905655790617, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: m_Layer
       value: 10
@@ -2393,6 +2402,14 @@ PrefabInstance:
       value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.Fov
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.Cooldown
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: _waitTimeList.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -2401,12 +2418,20 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.FieldOfView
+      value: 
+      objectReference: {fileID: 1798739743}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: _waitTimeList.Array.data[0]
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: _waitTimeList.Array.data[1]
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.ViewDistance
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: _waypointList.Array.data[0].x
@@ -2457,6 +2482,14 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaitTimeList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaypointList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: _stateWalk._waypointList.Array.data[0].x
       value: -25.3
       objectReference: {fileID: 0}
@@ -2487,6 +2520,30 @@ PrefabInstance:
     - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: _stateWalk._waypointList.Array.data[3].z
       value: 37.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaitTimeList.Array.data[0]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaitTimeList.Array.data[1]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaypointList.Array.data[0].x
+      value: -21.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaypointList.Array.data[0].z
+      value: 58.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaypointList.Array.data[1].x
+      value: 26.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaypointList.Array.data[1].z
+      value: 58.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2586,6 +2643,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!108 &420074918 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 3576948276147345784, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+  m_PrefabInstance: {fileID: 530996715}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &426389492
 Mesh:
   m_ObjectHideFlags: 0
@@ -3390,6 +3452,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 4176222139199750515, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4485223905655790617, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: m_Layer
       value: 10
@@ -3463,6 +3529,14 @@ PrefabInstance:
       value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.Fov
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.Cooldown
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: _waitTimeList.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -3470,6 +3544,10 @@ PrefabInstance:
       propertyPath: _waypointList.Array.size
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.FieldOfView
+      value: 
+      objectReference: {fileID: 420074918}
     - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: _waitTimeList.Array.data[0]
       value: 7
@@ -3485,6 +3563,10 @@ PrefabInstance:
     - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: _waitTimeList.Array.data[3]
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.ViewDistance
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: _waypointList.Array.data[0].x
@@ -3543,6 +3625,14 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaitTimeList.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaypointList.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: _stateWalk._waypointList.Array.data[0].x
       value: -25.3
       objectReference: {fileID: 0}
@@ -3573,6 +3663,54 @@ PrefabInstance:
     - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: _stateWalk._waypointList.Array.data[3].z
       value: 37.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaitTimeList.Array.data[0]
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaitTimeList.Array.data[1]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaitTimeList.Array.data[2]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaitTimeList.Array.data[3]
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaypointList.Array.data[0].x
+      value: 126.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaypointList.Array.data[0].z
+      value: 129.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaypointList.Array.data[1].x
+      value: 126.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaypointList.Array.data[1].z
+      value: -24.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaypointList.Array.data[2].x
+      value: 83.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaypointList.Array.data[2].z
+      value: -24.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaypointList.Array.data[3].x
+      value: 83.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaypointList.Array.data[3].z
+      value: 115.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4387,6 +4525,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 4176222139199750515, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4485223905655790617, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: m_Layer
       value: 10
@@ -4460,6 +4602,14 @@ PrefabInstance:
       value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.Fov
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.Cooldown
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: _waitTimeList.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -4468,12 +4618,20 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.FieldOfView
+      value: 
+      objectReference: {fileID: 984134515}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: _waitTimeList.Array.data[0]
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: _waitTimeList.Array.data[1]
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.ViewDistance
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: _waypointList.Array.data[0].x
@@ -4524,6 +4682,14 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaitTimeList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaypointList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: _stateWalk._waypointList.Array.data[0].x
       value: -25.3
       objectReference: {fileID: 0}
@@ -4554,6 +4720,30 @@ PrefabInstance:
     - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: _stateWalk._waypointList.Array.data[3].z
       value: 37.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaitTimeList.Array.data[0]
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaitTimeList.Array.data[1]
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaypointList.Array.data[0].x
+      value: 66.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaypointList.Array.data[0].z
+      value: 138
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaypointList.Array.data[1].x
+      value: 66.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaypointList.Array.data[1].z
+      value: -44.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5295,7 +5485,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 766294630}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.35376263, y: 0.05700439, z: -0.021606157, w: 0.9333465}
+  m_LocalRotation: {x: 0.35376263, y: 0.057004336, z: -0.021606125, w: 0.9333465}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -10541,6 +10731,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79d6047e46955414ba11b31f08f82ed2, type: 3}
+--- !u!108 &984134515 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 3576948276147345784, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+  m_PrefabInstance: {fileID: 653380627}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1028773255
 GameObject:
   m_ObjectHideFlags: 0
@@ -12392,6 +12587,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48771bf257b1264428cf9f8184ffe1f6, type: 3}
+--- !u!108 &1240340950 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 3576948276147345784, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+  m_PrefabInstance: {fileID: 1514970751}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1240418220
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12694,6 +12894,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 4176222139199750515, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4485223905655790617, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: m_Layer
       value: 10
@@ -12763,6 +12967,14 @@ PrefabInstance:
       value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.Fov
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.Cooldown
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: _waitTimeList.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -12770,6 +12982,10 @@ PrefabInstance:
       propertyPath: _waypointList.Array.size
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.FieldOfView
+      value: 
+      objectReference: {fileID: 1700717468}
     - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: _waitTimeList.Array.data[0]
       value: 5
@@ -12781,6 +12997,10 @@ PrefabInstance:
     - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: _waitTimeList.Array.data[2]
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.ViewDistance
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: _waypointList.Array.data[0].x
@@ -12831,6 +13051,14 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaitTimeList.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaypointList.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: _stateWalk._waypointList.Array.data[0].x
       value: -25.3
       objectReference: {fileID: 0}
@@ -12861,6 +13089,42 @@ PrefabInstance:
     - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: _stateWalk._waypointList.Array.data[3].z
       value: 37.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaitTimeList.Array.data[0]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaitTimeList.Array.data[1]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaitTimeList.Array.data[2]
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaypointList.Array.data[0].x
+      value: 22.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaypointList.Array.data[0].z
+      value: 99.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaypointList.Array.data[1].x
+      value: -22.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaypointList.Array.data[1].z
+      value: 99.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaypointList.Array.data[2].x
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaypointList.Array.data[2].z
+      value: 71
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13035,6 +13299,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 4176222139199750515, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4485223905655790617, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: m_Layer
       value: 10
@@ -13108,6 +13376,14 @@ PrefabInstance:
       value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.Fov
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.Cooldown
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: _waitTimeList.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -13116,12 +13392,20 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.FieldOfView
+      value: 
+      objectReference: {fileID: 1822786396}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: _waitTimeList.Array.data[0]
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: _waitTimeList.Array.data[1]
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.ViewDistance
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: _waypointList.Array.data[0].x
@@ -13172,6 +13456,14 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaitTimeList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaypointList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: _stateWalk._waypointList.Array.data[0].x
       value: -25.3
       objectReference: {fileID: 0}
@@ -13202,6 +13494,30 @@ PrefabInstance:
     - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: _stateWalk._waypointList.Array.data[3].z
       value: 37.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaitTimeList.Array.data[0]
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaitTimeList.Array.data[1]
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaypointList.Array.data[0].x
+      value: 42.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaypointList.Array.data[0].z
+      value: -46.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaypointList.Array.data[1].x
+      value: 42.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaypointList.Array.data[1].z
+      value: 140.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15885,6 +16201,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 4176222139199750515, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4485223905655790617, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: m_Layer
       value: 10
@@ -15958,6 +16278,14 @@ PrefabInstance:
       value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.Fov
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.Cooldown
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: _waitTimeList.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -15966,12 +16294,20 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.FieldOfView
+      value: 
+      objectReference: {fileID: 1240340950}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: _waitTimeList.Array.data[0]
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: _waitTimeList.Array.data[1]
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.ViewDistance
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: _waypointList.Array.data[0].x
@@ -16022,6 +16358,14 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaitTimeList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaypointList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: _stateWalk._waypointList.Array.data[0].x
       value: -25.3
       objectReference: {fileID: 0}
@@ -16052,6 +16396,30 @@ PrefabInstance:
     - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: _stateWalk._waypointList.Array.data[3].z
       value: 37.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaitTimeList.Array.data[0]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaitTimeList.Array.data[1]
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaypointList.Array.data[0].x
+      value: -21.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaypointList.Array.data[0].z
+      value: 33.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaypointList.Array.data[1].x
+      value: -21.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaypointList.Array.data[1].z
+      value: -41.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16852,7 +17220,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687258581}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.3977733, y: -0.00840619, z: 0.003644669, w: 0.917438}
+  m_LocalRotation: {x: 0.3977733, y: -0.008406256, z: 0.0036446976, w: 0.917438}
   m_LocalPosition: {x: 0.68897825, y: 53.2, z: -82.543686}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -17002,6 +17370,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 4176222139199750515, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4485223905655790617, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: m_Layer
       value: 10
@@ -17075,6 +17447,14 @@ PrefabInstance:
       value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.Fov
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.Cooldown
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: _waitTimeList.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -17082,6 +17462,10 @@ PrefabInstance:
       propertyPath: _waypointList.Array.size
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.FieldOfView
+      value: 
+      objectReference: {fileID: 207750045}
     - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: _waitTimeList.Array.data[0]
       value: 3
@@ -17097,6 +17481,10 @@ PrefabInstance:
     - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: _waitTimeList.Array.data[3]
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.ViewDistance
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: _waypointList.Array.data[0].x
@@ -17155,6 +17543,14 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaitTimeList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaypointList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: _stateWalk._waypointList.Array.data[0].x
       value: -25.3
       objectReference: {fileID: 0}
@@ -17185,6 +17581,30 @@ PrefabInstance:
     - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: _stateWalk._waypointList.Array.data[3].z
       value: 37.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaitTimeList.Array.data[0]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaitTimeList.Array.data[1]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaypointList.Array.data[0].x
+      value: 106.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaypointList.Array.data[0].z
+      value: 132.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaypointList.Array.data[1].x
+      value: 106.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaypointList.Array.data[1].z
+      value: -21
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17265,6 +17685,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48771bf257b1264428cf9f8184ffe1f6, type: 3}
+--- !u!108 &1700717468 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 3576948276147345784, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+  m_PrefabInstance: {fileID: 1264012897}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1721255274
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17851,6 +18276,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cfd3311072b88f54e9ce572aba51cf44, type: 3}
+--- !u!108 &1798739743 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 3576948276147345784, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+  m_PrefabInstance: {fileID: 393230259}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1818115989 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4176546312612380300, guid: cfd3311072b88f54e9ce572aba51cf44, type: 3}
@@ -17925,6 +18355,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48771bf257b1264428cf9f8184ffe1f6, type: 3}
+--- !u!108 &1822786396 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 3576948276147345784, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+  m_PrefabInstance: {fileID: 1275437640}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1824004066 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4176546312612380300, guid: cfd3311072b88f54e9ce572aba51cf44, type: 3}
@@ -18031,6 +18466,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 5111462546437565413, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
   m_PrefabInstance: {fileID: 1514970751}
+  m_PrefabAsset: {fileID: 0}
+--- !u!108 &1837251027 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 3576948276147345784, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+  m_PrefabInstance: {fileID: 1980862201203250772}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1841740929
 GameObject:
@@ -18937,7 +19377,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1942392687}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.3234061, y: 0.05767305, z: -0.019752122, w: 0.9442946}
+  m_LocalRotation: {x: 0.3234061, y: 0.057672948, z: -0.019752072, w: 0.9442946}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -20237,6 +20677,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 689389259}
     - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.Fov
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.Cooldown
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: _waitTimeList.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -20244,6 +20692,10 @@ PrefabInstance:
       propertyPath: _waypointList.Array.size
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.FieldOfView
+      value: 
+      objectReference: {fileID: 1837251027}
     - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: _waitTimeList.Array.data[0]
       value: 1
@@ -20259,6 +20711,10 @@ PrefabInstance:
     - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: _waitTimeList.Array.data[3]
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.ViewDistance
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: _waypointList.Array.data[0].x
@@ -20293,6 +20749,10 @@ PrefabInstance:
       value: -27.7
       objectReference: {fileID: 0}
     - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.AttackBehaviour
+      value: 
+      objectReference: {fileID: 689389259}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: _stateWalk._waitTimeList.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -20314,6 +20774,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: _stateWalk._waitTimeList.Array.data[3]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaitTimeList.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaypointList.Array.size
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
@@ -20347,6 +20815,54 @@ PrefabInstance:
     - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
       propertyPath: _stateWalk._waypointList.Array.data[3].z
       value: 37.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaitTimeList.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaitTimeList.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaitTimeList.Array.data[2]
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaitTimeList.Array.data[3]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaypointList.Array.data[0].x
+      value: 19.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaypointList.Array.data[0].z
+      value: 32.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaypointList.Array.data[1].x
+      value: -0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaypointList.Array.data[1].z
+      value: 7.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaypointList.Array.data[2].x
+      value: -0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaypointList.Array.data[2].z
+      value: 6.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaypointList.Array.data[3].x
+      value: 19.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667351469918249910, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}
+      propertyPath: _fsmEnemyParams.WaypointList.Array.data[3].z
+      value: -27.7
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8279038641032322006, guid: 9f9857ce39cf8d64b87a85dfb25818fb, type: 3}

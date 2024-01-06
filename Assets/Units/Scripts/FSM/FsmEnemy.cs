@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Assets.ObjectPool;
 using Assets.Units.Base;
 using Assets.Units.Enemies;
@@ -10,47 +9,31 @@ namespace Assets.Units.FSM
 {
     public class FsmEnemy : MonoBehaviour
     {
-        [SerializeField] private NavMeshAgent _navMeshAgent;
-        [SerializeField] private AttackBehaviour _attackBehaviour;
-        [SerializeField] private OverlapAllies _overlapAllies;
-        [SerializeField] private Light _fieldOFView;
-        [Header("Attack Settings")]
-        [SerializeField, Min(0f)] private float _cooldown;
-        [Header("Distances setting")]
-        [SerializeField] private float _fov = 90f;
-        [SerializeField] private float _viewDistance = 50f;
-        [Header("Walk")]
-        [SerializeField] private List<Vector3> _waypointList;
-        [SerializeField] private List<float> _waitTimeList;
+        [SerializeField] private FsmEnemyParams _fsmEnemyParams = new();
         
         private Fsm _fsm;
-        private PlayerUnit _player;
-        private BulletPool _bulletPool;
 
         [Inject]
         private void Consructor(PlayerUnit player, BulletPool bulletPool)
         {
-            _player = player;
-            _bulletPool = bulletPool;
+            _fsmEnemyParams.Player = player;
+            _fsmEnemyParams.BulletPool = bulletPool;
         }
 
         private void OnValidate()
         {
-            _navMeshAgent ??= GetComponent<NavMeshAgent>();
-            _attackBehaviour ??= GetComponent<AttackBehaviour>();
-            _overlapAllies ??= GetComponent<OverlapAllies>();
+            _fsmEnemyParams.NavMeshAgent ??= GetComponent<NavMeshAgent>();
+            _fsmEnemyParams.AttackBehaviour ??= GetComponent<AttackBehaviour>();
+            _fsmEnemyParams.OverlapAllies ??= GetComponent<OverlapAllies>();
+            _fsmEnemyParams.UnitTransform ??= transform;
         }
         
         private void Start()
         {
             _fsm = new Fsm();
 
-            _fsm.AddState(new FsmStateWalk(_fsm, _player, transform, 
-                            _navMeshAgent, _fieldOFView, _viewDistance, _fov, 
-                            _waypointList, _waitTimeList));
-            _fsm.AddState(new FsmStateAttack(_fsm, _player, _attackBehaviour, 
-                            _cooldown, _navMeshAgent, _viewDistance, _fieldOFView,
-                            _bulletPool, _overlapAllies));
+            _fsm.AddState(new FsmStateWalk(_fsm, _fsmEnemyParams));
+            _fsm.AddState(new FsmStateAttack(_fsm, _fsmEnemyParams));
 
             _fsm.SetState<FsmStateWalk>(); 
         }

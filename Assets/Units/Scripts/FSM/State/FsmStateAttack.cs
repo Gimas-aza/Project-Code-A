@@ -1,11 +1,8 @@
-using System;
 using Assets.ObjectPool;
 using Assets.Units.Base;
 using Assets.Units.ProjectileAttack;
-using Assets.Units.OverlapAttack;
 using UnityEngine;
 using UnityEngine.AI;
-using Zenject;
 using Assets.Units.Enemies;
 
 namespace Assets.Units.FSM
@@ -25,20 +22,17 @@ namespace Assets.Units.FSM
         private OverlapAllies _overlapAllies;
         private LayerMask _obstacleLayer = LayerMask.GetMask("Obstacle");
 
-        public FsmStateAttack(Fsm fsm, PlayerUnit player,
-                AttackBehaviour attackBehaviour, float cooldown,
-                NavMeshAgent navMeshAgent, float pursueDistance, 
-                Light fieldOFView, BulletPool bulletPool, OverlapAllies overlapAllies) : base(fsm)
+        public FsmStateAttack(Fsm fsm, FsmEnemyParams fsmEnemyParams) : base(fsm)
         {
             _fsm = fsm;
-            _player = player;
-            _attackBehaviour = attackBehaviour;
-            _cooldown = cooldown;
-            _navMeshAgent = navMeshAgent;
-            _pursueDistance = pursueDistance;
-            _fieldOFView = fieldOFView;
-            _bulletPool = bulletPool;
-            _overlapAllies = overlapAllies;
+            _player = fsmEnemyParams.Player;
+            _navMeshAgent = fsmEnemyParams.NavMeshAgent;
+            _pursueDistance = fsmEnemyParams.ViewDistance;
+            _attackBehaviour = fsmEnemyParams.AttackBehaviour;
+            _cooldown = fsmEnemyParams.Cooldown;
+            _fieldOFView = fsmEnemyParams.FieldOfView;
+            _bulletPool = fsmEnemyParams.BulletPool;
+            _overlapAllies = fsmEnemyParams.OverlapAllies;
         }
 
         public override void Enter()
