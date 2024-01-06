@@ -1,9 +1,5 @@
 using System;
-using Assets.Units;
-using Assets.Units.Base;
-using Assets.Units.Enemies;
 using Assets.Units.FSM;
-using Assets.Units.Interfaces;
 using NTC.OverlapSugar;
 using UnityEngine;
 

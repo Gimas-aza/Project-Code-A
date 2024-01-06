@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace Assets.Units.FSM
+namespace Assets.FSM
 {
     public abstract class FsmState
     {

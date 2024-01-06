@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Assets.Units.FSM
+namespace Assets.FSM
 {
     public class Fsm
     {

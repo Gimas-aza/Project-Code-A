@@ -1,3 +1,4 @@
+using Assets.FSM;
 using Assets.ObjectPool;
 using Assets.Units.Base;
 using Assets.Units.ProjectileAttack;
@@ -20,7 +21,7 @@ namespace Assets.Units.FSM
         private Light _fieldOFView;
         private BulletPool _bulletPool;
         private OverlapAllies _overlapAllies;
-        private LayerMask _obstacleLayer = LayerMask.GetMask("Obstacle");
+        private LayerMask _obstacleLayer;
 
         public FsmStateAttack(Fsm fsm, FsmEnemyParams fsmEnemyParams) : base(fsm)
         {
@@ -33,6 +34,7 @@ namespace Assets.Units.FSM
             _fieldOFView = fsmEnemyParams.FieldOfView;
             _bulletPool = fsmEnemyParams.BulletPool;
             _overlapAllies = fsmEnemyParams.OverlapAllies;
+            _obstacleLayer = fsmEnemyParams.ObstacleLayer;
         }
 
         public override void Enter()
