@@ -12,12 +12,14 @@ namespace Assets.Units
     {
         [SerializeField] private float _maxActionPoints = 100f;
         [SerializeField] private float _actionPoints = 100f;
+        [SerializeField] private PlayerSkills _playerSkills = new();
 
         private VitalityMonitor _vitalityMonitor;
         private PlayerMove _playerMove;
         private PlayerShoot _playerShoot;
         private Coroutine _actionPointsCoroutine;
 
+        public SkillsBuilder Skills { get; set; }
         public float MaxActionPoints
         {
             get => _maxActionPoints;
@@ -36,6 +38,11 @@ namespace Assets.Units
         private void Constructor(VitalityMonitor vitalityMonitor)
         {
             _vitalityMonitor = vitalityMonitor;
+        }
+
+        private void Awake()
+        {
+            Skills = new SkillsBuilder(_playerSkills);
         }
 
         private void Start()
