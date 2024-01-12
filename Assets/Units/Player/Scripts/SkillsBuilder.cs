@@ -16,13 +16,41 @@ namespace Assets.Units.Player
         
         public SkillsBuilder SetStealthDamage(int value)
         {
-            _playerSkills.StealthDamage = value;
+            switch (value)
+            {
+                case 0:
+                    _playerSkills.StealthDamage = 2;
+                    break;
+                case 1:
+                    _playerSkills.StealthDamage = 2.5f;
+                    break;
+                case 2:
+                    _playerSkills.StealthDamage = 3;
+                    break;
+                case 3:
+                    _playerSkills.StealthDamage = 3.5f;
+                    break;
+            }
             return this;
         }
 
         public SkillsBuilder SetCloaking(int value)
         {
-            _playerSkills.Cloaking = value;
+            switch (value)
+            {
+                case 0:
+                    _playerSkills.Cloaking = 0;
+                    break;
+                case 1:
+                    _playerSkills.Cloaking = 0.2f;
+                    break;
+                case 2:
+                    _playerSkills.Cloaking = 0.4f;
+                    break;
+                case 3:
+                    _playerSkills.Cloaking = 0.6f;
+                    break;
+            }
             return this;
         }
 

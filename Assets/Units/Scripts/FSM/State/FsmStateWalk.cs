@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AI;
 using Assets.FSM;
+using Assets.Units.Player;
 
 namespace Assets.Units.FSM
 {
@@ -22,13 +23,15 @@ namespace Assets.Units.FSM
         private Vector3 _lastMoveDir;
         private int _waypointIndex;
         private float _waitTimer;
-        private float _beginDetectionTimer;
         private float _detectionTimer; 
+        private float _tmpDetectionTimer;
+        private float _detectionTimerBegin;
         private float _beginSpeed;
         private float _multiplierSpeed;
         private float _timeToReturnWalk;
+        private PlayerSkills _skills;
 
-        public FsmStateWalk(Fsm fsm, FsmEnemyParams fsmEnemyParams) : base(fsm)
+        public FsmStateWalk(Fsm fsm, FsmEnemyParams fsmEnemyParams, PlayerSkills skills) : base(fsm)
         {
             _fsm = fsm;
             _player = fsmEnemyParams.Player;
@@ -39,9 +42,12 @@ namespace Assets.Units.FSM
             _fov = fsmEnemyParams.Fov;
             _waypointList = fsmEnemyParams.WaypointList;
             _waitTimeList = fsmEnemyParams.WaitTimeList;
-            _beginDetectionTimer = fsmEnemyParams.BeginDetectionTimer;
+            _detectionTimerBegin = fsmEnemyParams.DetectionTimer;
             _multiplierSpeed = fsmEnemyParams.MultiplierSpeed;
             _timeToReturnWalk = fsmEnemyParams.TimeToReturnWalk;
+
+            _tmpDetectionTimer = _detectionTimerBegin + (_detectionTimerBegin * skills.Cloaking);
+            _skills = skills;
         }
 
         public override void Enter()
@@ -81,7 +87,7 @@ namespace Assets.Units.FSM
             {
                 Movement();
                 SetView(_beginFov, _viewDistance);
-                _beginDetectionTimer = 2f;
+                _tmpDetectionTimer = _detectionTimerBegin + (_detectionTimerBegin * _skills.Cloaking);
             }
 
             FindTargetPlayer();
@@ -142,7 +148,7 @@ namespace Assets.Units.FSM
 
         private void ResetDetectionTimer()
         {
-            _detectionTimer = _beginDetectionTimer;
+            _detectionTimer = _tmpDetectionTimer;
         }
 
         private async void TryMoveLastPointPlayer()
@@ -154,7 +160,7 @@ namespace Assets.Units.FSM
             }
 
             SetView(_beginFov * 1.5f, _viewDistance);
-            _beginDetectionTimer = 1f;
+            _tmpDetectionTimer = 1f;
             _waitTimer = _timeToReturnWalk;
 
             await SetDestinationWithDelay(_player.transform.position, 1000);

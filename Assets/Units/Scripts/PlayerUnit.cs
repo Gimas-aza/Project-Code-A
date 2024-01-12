@@ -12,7 +12,7 @@ namespace Assets.Units
     {
         [SerializeField] private float _maxActionPoints = 100f;
         [SerializeField] private float _actionPoints = 100f;
-        [SerializeField] private PlayerSkills _playerSkills = new();
+        [SerializeField] private PlayerSkills _playerSkills;
 
         private VitalityMonitor _vitalityMonitor;
         private PlayerMove _playerMove;
@@ -35,14 +35,18 @@ namespace Assets.Units
         public UnityAction<bool> OnActiveStealth;
 
         [Inject]
-        private void Constructor(VitalityMonitor vitalityMonitor)
+        private void Constructor(VitalityMonitor vitalityMonitor, PlayerSkills skills)
         {
             _vitalityMonitor = vitalityMonitor;
+            _playerSkills = skills;
         }
 
         private void Awake()
         {
             Skills = new SkillsBuilder(_playerSkills);
+            Skills.SetStealthDamage(3);
+            Skills.SetCloaking(3);
+            Skills.Build();
         }
 
         private void Start()

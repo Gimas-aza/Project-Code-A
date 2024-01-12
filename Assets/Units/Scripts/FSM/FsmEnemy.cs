@@ -2,6 +2,7 @@ using Assets.FSM;
 using Assets.ObjectPool;
 using Assets.Units.Base;
 using Assets.Units.Enemies;
+using Assets.Units.Player;
 using UnityEngine;
 using UnityEngine.AI;
 using Zenject;
@@ -13,12 +14,14 @@ namespace Assets.Units.FSM
         [SerializeField] private FsmEnemyParams _fsmEnemyParams = new();
         
         private Fsm _fsm;
+        private PlayerSkills _skills;
 
         [Inject]
-        private void Consructor(PlayerUnit player, BulletPool bulletPool)
+        private void Consructor(PlayerUnit player, BulletPool bulletPool, PlayerSkills skills)
         {
             _fsmEnemyParams.Player = player;
             _fsmEnemyParams.BulletPool = bulletPool;
+            _skills = skills;
         }
 
         private void OnValidate()
@@ -33,7 +36,7 @@ namespace Assets.Units.FSM
         {
             _fsm = new Fsm();
 
-            _fsm.AddState(new FsmStateWalk(_fsm, _fsmEnemyParams));
+            _fsm.AddState(new FsmStateWalk(_fsm, _fsmEnemyParams, _skills));
             _fsm.AddState(new FsmStateAttack(_fsm, _fsmEnemyParams));
 
             _fsm.SetState<FsmStateWalk>(); 

@@ -8,8 +8,8 @@ namespace Assets.Units.Player
     public class PlayerSkills
     {
         [Header("Stealth")]
-        [SerializeField] private int _stealthDamage;
-        [SerializeField] private int _cloaking;
+        [SerializeField] private float _stealthDamage;
+        [SerializeField] private float _cloaking;
         [SerializeField] private int _distraction;
         [SerializeField] private int _stealthyHacking;
         [Header("Tactic")]
@@ -25,15 +25,15 @@ namespace Assets.Units.Player
         [SerializeField] private int _energyShield;
         [SerializeField] private int _movementSpeed;
 
-        public int StealthDamage 
+        public float StealthDamage 
         { 
             get => _stealthDamage; 
-            set => _stealthDamage = Mathf.Clamp(value, 0, 3);
+            set => _stealthDamage = Mathf.Clamp(value, 0, 5);
         }
-        public int Cloaking
+        public float Cloaking
         {
             get => _cloaking;
-            set => _cloaking = Mathf.Clamp(value, 0, 3);
+            set => _cloaking = Mathf.Clamp(value, 0, 1);
         }
         public int Distraction
         {

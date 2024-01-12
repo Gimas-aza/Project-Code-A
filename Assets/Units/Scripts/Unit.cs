@@ -1,7 +1,9 @@
 ﻿using System;
 using Assets.Units.Interfaces;
+using Assets.Units.Player;
 using UnityEngine;
 using UnityEngine.Events;
+using Zenject;
 
 namespace Assets.Units
 {
@@ -9,6 +11,9 @@ namespace Assets.Units
     {
         [SerializeField] private float _maxHealth = 100f;
         [SerializeField] private float _health = 100f;
+        
+        private PlayerSkills _skills;
+        private float _increaseDamage;
 
         public float MaxHealth
         {
@@ -24,6 +29,12 @@ namespace Assets.Units
 
         public bool IsIncreaseDamage = false;
 
+        [Inject]
+        private void Constructor(PlayerSkills skills)
+        {
+            _skills = skills;
+        }
+
         public bool IsAlive()
         {
             return _health > 0f;
@@ -34,7 +45,7 @@ namespace Assets.Units
             if (damage < 0f)
                 throw new ArgumentOutOfRangeException(nameof(damage));
             
-            damage = IsIncreaseDamage ? damage * 2 : damage;
+            damage = IsIncreaseDamage ? damage * _skills.StealthDamage : damage;
             
             Health -= damage;
             Debug.Log($"Health: {Health}");

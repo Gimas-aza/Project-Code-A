@@ -25,7 +25,7 @@ namespace Assets.Units.FSM
         public float ViewDistance;
         public float Fov;
         public float Cooldown;
-        public float BeginDetectionTimer = 2f;
+        public float DetectionTimer = 2f;
         public float MultiplierSpeed = 3f;
         public float TimeToReturnWalk = 7;
         public LayerMask ObstacleLayer;

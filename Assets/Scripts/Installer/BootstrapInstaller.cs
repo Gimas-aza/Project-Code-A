@@ -1,5 +1,6 @@
 using Assets.UI;
 using Assets.Units;
+using Assets.Units.Player;
 using UnityEngine;
 using Zenject;
 
@@ -10,6 +11,7 @@ public class BootstrapInstaller : MonoInstaller
         BindPlayer();
         BindUIVatilityMonitor();
         BindCamera();
+        BindPlayerSkills();
     }
 
     private void BindPlayer()
@@ -37,5 +39,12 @@ public class BootstrapInstaller : MonoInstaller
             .FromComponentInHierarchy()
             .AsSingle()
             .NonLazy();
+    }
+
+    private void BindPlayerSkills()
+    {
+        Container
+            .Bind<PlayerSkills>()
+            .AsSingle();
     }
 }

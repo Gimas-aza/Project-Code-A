@@ -1368,8 +1368,8 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 0.68838257, b: 0, a: 1}
-        key1: {r: 1, g: 0.5291431, b: 0, a: 0.24313726}
+        key0: {r: 0, g: 1, b: 0.99019146, a: 1}
+        key1: {r: 0, g: 0.6443143, b: 1, a: 0.24313726}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -4899,7 +4899,7 @@ GameObject:
   - component: {fileID: 4432559748360014462}
   - component: {fileID: 7894171402880283598}
   m_Layer: 9
-  m_Name: TestGun 1
+  m_Name: GunHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4913,7 +4913,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5899805541104131243}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0.4184446, y: -0, z: -0, w: 0.90824234}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4921,7 +4921,7 @@ Transform:
   - {fileID: 5472474303066967889}
   - {fileID: 6402481285226387051}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -49.473, y: 0, z: 0}
 --- !u!114 &7894171402880283598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4939,7 +4939,7 @@ MonoBehaviour:
   _projectilePrefab: {fileID: 6934365160915032090, guid: 4a4a3b7f26b96c64c88c79f3d70f10ae, type: 3}
   _numberProjectile: 20
   _forceMode: 1
-  _force: 30
+  _force: 50
   _cooldown: 0.4
   _spreadRange: 4
   _muzzleFlash: {fileID: 3178537307520331935}
@@ -6309,8 +6309,8 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 0.85390794, b: 0, a: 1}
-        key1: {r: 1, g: 0.44470748, b: 0, a: 1}
+        key0: {r: 0, g: 1, b: 0.99019146, a: 1}
+        key1: {r: 0, g: 0.6443143, b: 1, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
