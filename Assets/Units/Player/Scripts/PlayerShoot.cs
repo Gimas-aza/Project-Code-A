@@ -1,5 +1,6 @@
 using System;
 using Assets.Units.Base;
+using Assets.Units.ProjectileAttack;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,11 +15,14 @@ namespace Assets.Units.Player
         [SerializeField] private int _maxIndex = 2;
         [SerializeField, Min(0)] private int _currentIndex;
         [SerializeField] private float _speedRotate;
+        [SerializeField] private Transform _targetTransform;
+        [SerializeField] public float _angleInDegrees;
 
         private InputAction _actionShoot;
         private InputAction _actionSwitchWeapon;
         private Vector3 _drivingDirections = Vector3.zero;
         private AttackBehaviour _currentWeapon;
+        private ProjectileAttackWeapon _currentProjectileAttack;
         private Vector3 _directionShoot;
 
         private void OnValidate()
@@ -35,6 +39,7 @@ namespace Assets.Units.Player
 
             _weapons.Init();
             _currentWeapon = _weapons.GetWeapon(_currentIndex);
+            _currentProjectileAttack = _currentWeapon.GetComponent<ProjectileAttackWeapon>();
 
             SpeedRotate = _speedRotate;
         }
@@ -66,13 +71,24 @@ namespace Assets.Units.Player
             _currentIndex = index;
 
             _currentWeapon = _weapons.GetWeapon(_currentIndex);
+            if (_currentWeapon != null)
+                _currentProjectileAttack = _currentWeapon.GetComponent<ProjectileAttackWeapon>();
         }
 
         protected override void RotateCharacter(Vector3 moveDirection)
         {
-            base.RotateCharacter(moveDirection);
+            float force = 0;
+            if (_currentProjectileAttack != null && _currentProjectileAttack.BulletFlightType == BulletFlightType.Parabolic)
+            {
+                _currentWeapon.transform.localEulerAngles = new Vector3(-_angleInDegrees, 0f, 0f);
+                force = GetParabola();
+            }
+            else
+                base.RotateCharacter(moveDirection);
+            
             if (_currentWeapon == null)
                 return;
+
 
             if (moveDirection != Vector3.zero)
             {
@@ -82,15 +98,29 @@ namespace Assets.Units.Player
             
             if (moveDirection == Vector3.zero && _directionShoot != Vector3.zero)
             {
-                _currentWeapon.PerformAttack();
+                _currentWeapon.PerformAttack(force);
                 _directionShoot = Vector3.zero;
                 _laserPointer.SetActivateLaser(false);
             }
+        }
 
-            // if (moveDirection != Vector3.zero && _currentWeapon != null)
-            // {
-            //     _currentWeapon.PerformAttack();
-            // }
+        private float GetParabola()
+        {
+            float g = Physics.gravity.y;
+            Vector3 fromTo = _targetTransform.position - _currentWeapon.transform.position;
+            Vector3 fromToXZ = new Vector3(fromTo.x, 0f, fromTo.z);
+
+            transform.rotation = Quaternion.LookRotation(fromToXZ, Vector3.up);
+
+            float x = fromToXZ.magnitude;
+            float y = fromTo.y;
+
+            float AngleInRadians = _angleInDegrees * Mathf.PI / 180;
+
+            float v2 = (g * x * x) / (2 * (y - Mathf.Tan(AngleInRadians) * x) * Mathf.Pow(Mathf.Cos(AngleInRadians), 2));
+            float v = Mathf.Sqrt(Mathf.Abs(v2));
+            Debug.Log(v);
+            return v;
         }
     }
 }

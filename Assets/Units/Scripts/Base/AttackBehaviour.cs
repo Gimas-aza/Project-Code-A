@@ -6,6 +6,6 @@ namespace Assets.Units.Base
     {
         public bool IsAccessToAttack;
 
-        public abstract void PerformAttack();
+        public abstract void PerformAttack(float force = 0);
     }
 }

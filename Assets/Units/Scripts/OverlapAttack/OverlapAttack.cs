@@ -34,7 +34,7 @@ namespace Assets.Units.OverlapAttack
         private int _overlapResultsCount;
 
         [ContextMenu(nameof(PerformAttack))]
-        public override void PerformAttack()
+        public override void PerformAttack(float force = 0)
         {
             if (TryFindEnemies())
             {
