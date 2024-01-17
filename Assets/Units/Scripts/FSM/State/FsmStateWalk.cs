@@ -10,6 +10,7 @@ namespace Assets.Units.FSM
     public class FsmStateWalk : FsmState
     {
         private Fsm _fsm;
+        private FsmEnemyParams _fsmEnemyParams;
         private PlayerUnit _player;
         private Transform _unitTransform;
         private EnemyUnit _unitEnemy;
@@ -29,11 +30,13 @@ namespace Assets.Units.FSM
         private float _beginSpeed;
         private float _multiplierSpeed;
         private float _timeToReturnWalk;
+        private float _distanceStop;
         private PlayerSkills _skills;
 
         public FsmStateWalk(Fsm fsm, FsmEnemyParams fsmEnemyParams, PlayerSkills skills) : base(fsm)
         {
             _fsm = fsm;
+            _fsmEnemyParams = fsmEnemyParams;
             _player = fsmEnemyParams.Player;
             _unitTransform = fsmEnemyParams.UnitTransform;
             _navMeshAgent = fsmEnemyParams.NavMeshAgent;
@@ -45,6 +48,7 @@ namespace Assets.Units.FSM
             _detectionTimerBegin = fsmEnemyParams.DetectionTimer;
             _multiplierSpeed = fsmEnemyParams.MultiplierSpeed;
             _timeToReturnWalk = fsmEnemyParams.TimeToReturnWalk;
+            _distanceStop = fsmEnemyParams.DistanceStop;
 
             _tmpDetectionTimer = _detectionTimerBegin + (_detectionTimerBegin * skills.Cloaking);
             _skills = skills;
@@ -81,8 +85,11 @@ namespace Assets.Units.FSM
 
         public override void Update()
         {
-            if (_navMeshAgent.remainingDistance.CompareTo(0f) == 0)
+            if (_navMeshAgent.remainingDistance <= _distanceStop)
+            {
+                _navMeshAgent.SetDestination(_unitTransform.position);
                 _waitTimer -= Time.deltaTime;
+            }
             if (_waitTimer <= 0f)
             {
                 Movement();
@@ -153,6 +160,18 @@ namespace Assets.Units.FSM
 
         private async void TryMoveLastPointPlayer()
         {
+            _distanceStop = _fsmEnemyParams.DistanceStop;
+            await MovePoint(_player.transform.position, 1000); 
+        }
+
+        public async Task MovePointOnDistance(Vector3 point, float distanceStop)
+        {
+            _distanceStop = distanceStop;
+            await MovePoint(point, 500);
+        }
+
+        public async Task MovePoint(Vector3 point, int delay = 0)
+        {
             if (!_player.IsStealth)
             {
                 _fsm.SetState<FsmStateAttack>();
@@ -163,7 +182,7 @@ namespace Assets.Units.FSM
             _tmpDetectionTimer = 1f;
             _waitTimer = _timeToReturnWalk;
 
-            await SetDestinationWithDelay(_player.transform.position, 1000);
+            await SetDestinationWithDelay(point, delay);
         }
 
         private void SetView(float fov, float viewDistance)

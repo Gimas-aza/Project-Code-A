@@ -167,6 +167,37 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
+--- !u!1 &4557967881778597413
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4362841638998929790}
+  m_Layer: 6
+  m_Name: OverlapStartPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4362841638998929790
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4557967881778597413}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -20}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1990473219629856669}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8422416065932870640
 GameObject:
   m_ObjectHideFlags: 0
@@ -177,7 +208,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1990473219629856669}
   - component: {fileID: 109381255109655855}
-  - component: {fileID: 6934365160915032090}
+  - component: {fileID: 8322767940921896040}
+  - component: {fileID: 6075254569228732158}
   - component: {fileID: 8974850882430098209}
   m_Layer: 6
   m_Name: Bullet 1
@@ -185,7 +217,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1990473219629856669
 Transform:
   m_ObjectHideFlags: 0
@@ -200,6 +232,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1072598277343990845}
+  - {fileID: 4362841638998929790}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &109381255109655855
@@ -210,7 +243,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8422416065932870640}
   serializedVersion: 4
-  m_Mass: 3
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -224,12 +257,12 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
---- !u!114 &6934365160915032090
+--- !u!114 &8322767940921896040
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -238,16 +271,42 @@ MonoBehaviour:
   m_GameObject: {fileID: 8422416065932870640}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a0185ddf8cdacb44ac29a182f776203, type: 3}
+  m_Script: {fileID: 11500000, guid: f1c1e7872acffa348b2f9445279bbd44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 1
-  _disposeType: 0
+  _damage: 0
+  _disposeType: 1
   _projectileRigidbody: {fileID: 109381255109655855}
   _flyEffect: {fileID: 3285167827997254251}
   _spawnEffectOnDestroy: 0
   _effectOnDestroyPrefab: {fileID: 0}
   _effectOnDestroyLifetime: 2
+--- !u!114 &6075254569228732158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8422416065932870640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4cd69f70b6877a459262685fedef008, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _searchLayerMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  _obstacleLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  _overlapStartPoint: {fileID: 4362841638998929790}
+  _overlapType: 1
+  _offset: {x: 0, y: 0, z: 0}
+  _boxSize: {x: 1, y: 1, z: 1}
+  _sphereRadius: 50
+  _considerObstacles: 1
+  _drawGizmosType: 0
+  _gizmosColor: {r: 0.6867657, g: 0, b: 1, a: 0.5882353}
 --- !u!114 &8974850882430098209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,4 +319,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 521e56f6cbd6d2d46b9cecb210c81def, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _countdown: 2
+  _countdown: 5

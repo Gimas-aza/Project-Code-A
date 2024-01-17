@@ -28,6 +28,7 @@ namespace Assets.Units.FSM
         public float DetectionTimer = 2f;
         public float MultiplierSpeed = 3f;
         public float TimeToReturnWalk = 7;
+        public float DistanceStop = 3;
         public LayerMask ObstacleLayer;
     }
 }

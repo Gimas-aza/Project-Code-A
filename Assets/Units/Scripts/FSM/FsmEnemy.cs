@@ -47,6 +47,13 @@ namespace Assets.Units.FSM
             _fsm.Update();
         }
 
+        public async void ComeUpWith(Vector3 point)
+        {
+            if (_fsm.GetCurrentState() is not FsmStateWalk stateWalk) return;
+
+            await stateWalk.MovePointOnDistance(point, _fsmEnemyParams.DistanceStop * 2);
+        }
+
         public void SetStateAttack()
         {
             _fsm.SetState<FsmStateAttack>();

@@ -84,7 +84,7 @@ namespace Assets.Units.ProjectileAttack
             ResetRigidbody();
         }
 
-        private void ResetRigidbody()
+        public void ResetRigidbody()
         {
             _projectileRigidbody.velocity = Vector3.zero;
             _projectileRigidbody.angularVelocity = Vector3.zero;

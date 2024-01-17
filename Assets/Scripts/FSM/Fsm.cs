@@ -30,6 +30,11 @@ namespace Assets.FSM
             }
         }
 
+        public FsmState GetCurrentState()
+        {
+            return _currentState;
+        }
+
         public void Update()
         {
             _currentState?.Update();
