@@ -1,8 +1,5 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using Assets.Units.Enemies;
-using Assets.Units.FSM;
 using NTC.OverlapSugar;
 using UnityEngine;
 
@@ -33,6 +30,7 @@ namespace Assets.Units.Base
 
         public Collider[] OverlapResults => _overlapResults;
         public int OverlapResultsCount => _overlapResultsCount;
+        public Transform OverlapStartPoint => _overlapStartPoint;
 
         public virtual void StartAction() { }
 
@@ -62,19 +60,7 @@ namespace Assets.Units.Base
             return Physics.OverlapSphereNonAlloc(position, _sphereRadius, _overlapResults, _searchLayerMask.value);
         }
 
-        protected virtual void TryAction()
-        {
-            for (int i = 0; i < _overlapResultsCount; i++)
-            {
-                // if (_overlapResults[i].TryGetComponent(out T allie) == false)
-                // {
-                //     continue;
-                // }
-                
-                
-                
-            }
-        }
+        protected virtual void TryAction() { }
 
         protected bool CheckObstacle(Collider overlapResult)
         {

@@ -42,7 +42,7 @@ namespace Assets.Units.FSM
             _time = 0;
             _navMeshAgent.stoppingDistance = 4.5f;
             _fieldOFView.enabled = false;
-            _overlapAllies.AttackEnemies();
+            _overlapAllies.StartAction();
 
             if (_attackBehaviour.TryGetComponent(out ProjectileAttackWeapon projectile))
             {
