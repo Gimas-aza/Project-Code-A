@@ -4938,6 +4938,8 @@ MonoBehaviour:
   _weaponMuzzle: {fileID: 6402481285226387051}
   _projectilePrefab: {fileID: 8322767940921896040, guid: 4a4a3b7f26b96c64c88c79f3d70f10ae, type: 3}
   _numberProjectile: 20
+  _totalNumberProjectiles: 100
+  _cooldownReload: 0.5
   _forceMode: 1
   _force: 50
   _cooldown: 0.4

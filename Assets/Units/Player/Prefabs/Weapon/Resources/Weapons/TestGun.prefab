@@ -4937,7 +4937,9 @@ MonoBehaviour:
   IsAccessToAttack: 1
   _weaponMuzzle: {fileID: 6402481285226387051}
   _projectilePrefab: {fileID: 6934365160915032090, guid: 4bdbf23cc9d1a619d973afb9d2f990cb, type: 3}
-  _numberProjectile: 20
+  _numberProjectile: 5
+  _totalNumberProjectiles: 10
+  _cooldownReload: 1.5
   _forceMode: 1
   _force: 50
   _cooldown: 0.5

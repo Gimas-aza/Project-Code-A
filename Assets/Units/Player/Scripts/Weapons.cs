@@ -3,6 +3,7 @@ using System.Linq;
 using Assets.ObjectPool;
 using Assets.Units.Base;
 using Assets.Units.ProjectileAttack;
+using TMPro;
 using UnityEngine;
 using Zenject;
 
@@ -10,6 +11,8 @@ namespace Assets.Units.Player
 {
     public class Weapons : MonoBehaviour
     {
+        [SerializeField] private TextMeshProUGUI _numberProjectileText;
+
         private List<AttackBehaviour> _allWeapons;
         private List<AttackBehaviour> _allAvailableWeapons;
         private BulletPool _bulletPool;
@@ -64,7 +67,10 @@ namespace Assets.Units.Player
         private void SetInitForAttack(AttackBehaviour weapon)
         {
             if (weapon.TryGetComponent<ProjectileAttackWeapon>(out var projectileAttackWeapon))
+            {
                 projectileAttackWeapon.Init(_bulletPool);
+                projectileAttackWeapon.SetUI(_numberProjectileText); 
+            }
         }
     }
 }

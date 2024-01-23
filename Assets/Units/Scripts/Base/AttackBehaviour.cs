@@ -7,5 +7,8 @@ namespace Assets.Units.Base
         public bool IsAccessToAttack;
 
         public abstract void PerformAttack();
+        public virtual void Enable() { }
+        public virtual void Disable() { }
+        public virtual void Reload() { }
     }
 }

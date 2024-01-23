@@ -30,9 +30,10 @@ namespace Assets.ObjectPool
                 Debug.LogError("Сначала создайте пули с помощью метода Create");
                 return null;
             }
-            if (_bullets[weapon].Count() == _currentBullet)
+            if (_bullets[weapon].Count() - 1 <= _currentBullet)
                 _currentBullet = 0;
 
+            Debug.Log(_bullets[weapon].Count() - 1 + " " + _currentBullet);
             var bullet = _bullets[weapon][_currentBullet++];
             bullet.transform.position = position;
             bullet.transform.rotation = rotation;

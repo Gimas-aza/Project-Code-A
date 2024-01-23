@@ -17,6 +17,7 @@ namespace Assets.Units.Player
 
         private InputAction _actionShoot;
         private InputAction _actionSwitchWeapon;
+        private InputAction _actionReloadWeapon;
         private Vector3 _drivingDirections = Vector3.zero;
         private AttackBehaviour _currentWeapon;
         private Vector3 _directionShoot;
@@ -32,9 +33,11 @@ namespace Assets.Units.Player
             base.Awake();
             _actionShoot = InputSystem.Player.Shoot;
             _actionSwitchWeapon = InputSystem.Player.SwitchWeapon;
+            _actionReloadWeapon = InputSystem.Player.Reload;
 
             _weapons.Init();
             _currentWeapon = _weapons.GetWeapon(_currentIndex);
+            _currentWeapon?.Enable();
 
             SpeedRotate = _speedRotate;
         }
@@ -43,12 +46,14 @@ namespace Assets.Units.Player
         {
             base.OnEnable();
             _actionSwitchWeapon.performed += SwitchWeapon;
+            _actionReloadWeapon.performed += ReloadWeapon;
         }
 
         protected override void OnDisable()
         {
             base.OnDisable();
             _actionSwitchWeapon.performed -= SwitchWeapon;
+            _actionReloadWeapon.performed -= ReloadWeapon;
         }
 
         private void FixedUpdate()
@@ -65,7 +70,14 @@ namespace Assets.Units.Player
             var index = (_currentIndex + 1 > maxIndex) ? 0 : _currentIndex + 1;
             _currentIndex = index;
 
+            _currentWeapon?.Disable();
             _currentWeapon = _weapons.GetWeapon(_currentIndex);
+            _currentWeapon.Enable();
+        }
+
+        private void ReloadWeapon(InputAction.CallbackContext context)
+        {
+            _currentWeapon.Reload();
         }
 
         protected override void RotateCharacter(Vector3 moveDirection)
