@@ -1,7 +1,6 @@
 using DG.Tweening;
 using UnityEngine;
 using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 
 public class RadioGame : MonoBehaviour
@@ -12,13 +11,22 @@ public class RadioGame : MonoBehaviour
     [SerializeField] private RectTransform _container;
     [SerializeField] private Notification _notification;
     [SerializeField] private TextMeshProUGUI _inputPassword;
+    [SerializeField] private TextMeshProUGUI _numbersTryText;
+    [SerializeField] private int _numbersTry;
 
     private float _width;
-    private Dictionary<Difficulty, float> _difficulty = new()
+    private Difficulty _difficulty;
+    private Dictionary<Difficulty, float> _difficultyTargetArea = new()
     {
         { Difficulty.Easy, 0.15f },
         { Difficulty.Normal, 0.1f },
         { Difficulty.Hard, 0.05f }
+    };
+    private Dictionary<Difficulty, float> _difficultyLine = new()
+    {
+        { Difficulty.Easy, 1.5f },
+        { Difficulty.Normal, 1f },
+        { Difficulty.Hard, 0.5f }
     };
     private List<OptionPassword> _listPassword;
     private int _count;
@@ -35,9 +43,7 @@ public class RadioGame : MonoBehaviour
 
     private void Start()
     {
-        SetTargetArea(Difficulty.Easy);
-        StartLine(1f);
-        CreateOptionsPassword(10);
+        
     }
 
     private void OnDestroy()
@@ -45,10 +51,26 @@ public class RadioGame : MonoBehaviour
         StopLine();
     }
 
-    private void StartLine(float speed)
+    private void StartMiniGame(Difficulty difficulty)
+    {
+        _difficulty = difficulty;
+        SetTargetArea(difficulty);
+        StartLine(difficulty);
+        CreateOptionsPassword(15);
+        _numbersTryText.text = _numbersTry.ToString();
+    }
+
+    private void StopMiniGame()
+    {
+        StopLine();
+        Debug.Log("Stop");
+    }
+
+    private void StartLine(Difficulty difficulty)
     {
         var percent = 1f;
         var currentPosition = _width * percent;
+        var speed = _difficultyLine[difficulty];
 
         _line.anchoredPosition = new Vector2(0f, 0f);
 
@@ -58,7 +80,6 @@ public class RadioGame : MonoBehaviour
             .SetUpdate(true);
     }
 
-    [ContextMenu(nameof(StopLine))]
     private void StopLine()
     {
         _line.DOKill();
@@ -66,7 +87,7 @@ public class RadioGame : MonoBehaviour
 
     private void SetTargetArea(Difficulty difficulty)
     {
-        var area = _difficulty[difficulty];
+        var area = _difficultyTargetArea[difficulty];
         var percent = Random.Range(0f, 1f - area); 
 
         var currentPosition = _width * percent;
@@ -115,10 +136,20 @@ public class RadioGame : MonoBehaviour
             _notification.gameObject.SetActive(true);
             _notification.WriteTrueSymbols(text);
             _currentPassword = GetPasswordTogether(_currentPassword, text);
+            
+            _numbersTry--;
+            _numbersTryText.text = _numbersTry.ToString();
+            if (_numbersTry == 0)
+            {
+                Debug.Log("Lose");
+                StopMiniGame();
+            }
         }
         else
         {
             _currentPassword = _truePassword.TextValue;
+            Debug.Log("Win");
+            StopMiniGame();
         }
 
         _inputPassword.text = _currentPassword;
@@ -164,19 +195,24 @@ public class RadioGame : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Tab)) // todo настроить управление, чтобы оно работало с машиной состаяний для меню
         {
-            StopLine();
-            if (CheckLineInArea())
-            {
-                _listPassword[_count++].ShowPassword();
-                if (_listPassword.Count == _count)
-                {
-                    return;
-                }
-            }
-            SetTargetArea(Difficulty.Easy);
-            StartLine(1f);
+            InputFrequency(); 
         }
+    }
+
+    private void InputFrequency()
+    {
+        StopLine();
+        if (CheckLineInArea())
+        {
+            _listPassword[_count++].ShowPassword();
+            if (_listPassword.Count == _count)
+            {
+                return;
+            }
+        }
+        SetTargetArea(_difficulty);
+        StartLine(_difficulty);
     }
 }

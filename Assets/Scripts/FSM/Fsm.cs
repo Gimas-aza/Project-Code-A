@@ -6,6 +6,7 @@ namespace Assets.FSM
     public class Fsm
     {
         private FsmState _currentState { get; set; }
+        private FsmState _savedState { get; set; }
         private Dictionary<Type, FsmState> _states = new();
 
         public void AddState(FsmState state)
@@ -33,6 +34,25 @@ namespace Assets.FSM
         public FsmState GetCurrentState()
         {
             return _currentState;
+        }
+
+        public void SaveState()
+        {
+            _savedState = _currentState;
+        }
+
+        public bool LoadSavedState()
+        {
+            if (_savedState == null)
+                return false;
+
+            _currentState?.Exit();
+
+            _currentState = _savedState;
+
+            _currentState.Enter();
+
+            return true;
         }
 
         public void Update()

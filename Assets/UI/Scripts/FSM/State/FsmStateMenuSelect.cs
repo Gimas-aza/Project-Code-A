@@ -6,6 +6,7 @@ namespace Assets.UI.FSM
     public class FsmStateMenuSelect : FsmState
     {
         private Fsm _fsm;
+        private FsmMenuParams _fsmMenuParams;
         private GameObject _menuSelect;
         private GameObject _statisticMenu;
         private GameObject _inputButton;
@@ -13,6 +14,7 @@ namespace Assets.UI.FSM
         public FsmStateMenuSelect(Fsm fsm, FsmMenuParams fsmMenuParams) : base(fsm)
         {
             _fsm = fsm;
+            _fsmMenuParams = fsmMenuParams;
             _menuSelect = fsmMenuParams.MenuSelect;
             _statisticMenu = fsmMenuParams.StatisticMenu;
             _inputButton = fsmMenuParams.InputButton;
@@ -20,34 +22,13 @@ namespace Assets.UI.FSM
 
         public override void Enter()
         {
-            OpenMenu(); 
+            _fsmMenuParams.SetMenu(true); 
+            if (!_fsm.LoadSavedState())
+                _fsm.SetState<FsmStateOrganizer>();
         }
 
         public override void Exit()
         {
-            OpenMenu(); 
         }
-
-        private void OpenMenu()
-        {
-            _menuSelect.SetActive(!_menuSelect.activeSelf);
-            HideInterface(!_menuSelect.activeSelf);
-            SetPause(_menuSelect.activeSelf);
-        }
-
-        private void HideInterface(bool isActive)
-        {
-            _inputButton.SetActive(isActive);
-            _statisticMenu.SetActive(isActive);
-        }
-
-        private void SetPause(bool isActive)
-        {
-            if (isActive)
-                Time.timeScale = 0;
-            else
-                Time.timeScale = 1; 
-        }
-        
     }
 }
