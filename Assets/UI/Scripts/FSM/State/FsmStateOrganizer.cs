@@ -19,6 +19,7 @@ namespace Assets.UI.FSM
         public override void Enter()
         {
             _fsmMenuParams.SetMenu(true); 
+            _fsmMenuParams.SetMenuSwitch(true);
             _organizerMenu.SetActive(true);
             _fsm.SaveState();
         }

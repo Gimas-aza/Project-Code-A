@@ -5,6 +5,7 @@ using TMPro;
 
 public class RadioGame : MonoBehaviour
 {
+    [SerializeField] private RectTransform _frequencyBand;
     [SerializeField] private RectTransform _line;
     [SerializeField] private RectTransform _targetArea;
     [SerializeField] private OptionPassword _optionPassword;
@@ -35,7 +36,7 @@ public class RadioGame : MonoBehaviour
 
     private void Awake()
     {
-        _width = GetComponent<RectTransform>().rect.width;
+        _width = _frequencyBand.rect.width;
         _line.anchoredPosition = new Vector2(0f, 0f);
         _targetArea.offsetMin = new Vector2(0f, 0f);
         _targetArea.offsetMax = new Vector2(-_width, 0f);
@@ -51,7 +52,7 @@ public class RadioGame : MonoBehaviour
         StopLine();
     }
 
-    private void StartMiniGame(Difficulty difficulty)
+    public void StartMiniGame(Difficulty difficulty)
     {
         _difficulty = difficulty;
         SetTargetArea(difficulty);
@@ -195,7 +196,7 @@ public class RadioGame : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab)) // todo настроить управление, чтобы оно работало с машиной состаяний для меню
+        if (Input.GetKeyDown(KeyCode.Y)) // todo настроить управление, чтобы оно работало с машиной состаяний для меню
         {
             InputFrequency(); 
         }

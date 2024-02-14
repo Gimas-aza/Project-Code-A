@@ -404,7 +404,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.016}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00045776367, y: -0.061325073}
+  m_AnchoredPosition: {x: -0.00048828125, y: -0.061325073}
   m_SizeDelta: {x: 0, y: 62}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &79259915
@@ -1117,7 +1117,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 169507329}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.38743293, y: 0.05618192, z: -0.023662573, w: 0.91988015}
+  m_LocalRotation: {x: 0.38743293, y: 0.056181848, z: -0.023662528, w: 0.91988015}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9260,7 +9260,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 766294630}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.35376263, y: 0.05700439, z: -0.021606157, w: 0.9333465}
+  m_LocalRotation: {x: 0.35376263, y: 0.057004336, z: -0.021606125, w: 0.9333465}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9742,6 +9742,7 @@ GameObject:
   - component: {fileID: 796231157}
   - component: {fileID: 796231160}
   - component: {fileID: 796231158}
+  - component: {fileID: 796231161}
   m_Layer: 5
   m_Name: MiniGameHack
   m_TagString: Untagged
@@ -9813,6 +9814,27 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &796231161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 796231156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb915d8dec7882d42b5f289e04baee25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _frequencyBand: {fileID: 1777030885}
+  _line: {fileID: 1580462158}
+  _targetArea: {fileID: 1174663844}
+  _optionPassword: {fileID: 3735459081849317610, guid: 06bd2f1e407397b4db77179fe25a7014, type: 3}
+  _container: {fileID: 741166780}
+  _notification: {fileID: 1357011219}
+  _inputPassword: {fileID: 1915341643}
+  _numbersTryText: {fileID: 307786063}
+  _numbersTry: 4
 --- !u!1 &796882176
 GameObject:
   m_ObjectHideFlags: 0
@@ -10374,7 +10396,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &815026298
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16234,7 +16256,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &999321681
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16292,7 +16314,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 4.616516, y: -7}
+  m_AnchoredPosition: {x: 4.616455, y: -7}
   m_SizeDelta: {x: 420, y: 45}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1001880845
@@ -22891,7 +22913,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 4.616516, y: -7}
+  m_AnchoredPosition: {x: 4.616455, y: -7}
   m_SizeDelta: {x: 420, y: 45}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1385092384
@@ -25714,7 +25736,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.016}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00045776367, y: -0.061325073}
+  m_AnchoredPosition: {x: -0.00048828125, y: -0.061325073}
   m_SizeDelta: {x: 0, y: 62}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1503332251
@@ -28271,7 +28293,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687258581}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.3977733, y: -0.00840619, z: 0.003644669, w: 0.917438}
+  m_LocalRotation: {x: 0.3977733, y: -0.008406256, z: 0.0036446976, w: 0.917438}
   m_LocalPosition: {x: 0.68897825, y: 53.2, z: -82.543686}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -29197,8 +29219,10 @@ MonoBehaviour:
   _organizerMenu: {fileID: 599396763}
   _skillMenu: {fileID: 1323442381}
   _inventoryMenu: {fileID: 558291335}
+  _hackMenu: {fileID: 796231161}
   _fsmMenuParams:
     MenuSelect: {fileID: 978640352}
+    MenuSwitch: {fileID: 815026297}
     InputButton: {fileID: 408398706}
     StatisticMenu: {fileID: 654893862}
 --- !u!1 &1725672872
@@ -29787,7 +29811,6 @@ GameObject:
   - component: {fileID: 1777030885}
   - component: {fileID: 1777030887}
   - component: {fileID: 1777030886}
-  - component: {fileID: 1777030888}
   m_Layer: 5
   m_Name: 'RadioFrequency '
   m_TagString: Untagged
@@ -29854,26 +29877,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1777030884}
   m_CullTransparentMesh: 1
---- !u!114 &1777030888
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1777030884}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb915d8dec7882d42b5f289e04baee25, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _line: {fileID: 1580462158}
-  _targetArea: {fileID: 1174663844}
-  _optionPassword: {fileID: 3735459081849317610, guid: 06bd2f1e407397b4db77179fe25a7014, type: 3}
-  _container: {fileID: 741166780}
-  _notification: {fileID: 1357011219}
-  _inputPassword: {fileID: 1915341643}
-  _numbersTryText: {fileID: 307786063}
-  _numbersTry: 4
 --- !u!4 &1796238902 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9180473135084724067, guid: 52a01316b039bc04fb0d88a08d260a28, type: 3}
@@ -31948,7 +31951,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1942392687}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.3234061, y: 0.05767305, z: -0.019752122, w: 0.9442946}
+  m_LocalRotation: {x: 0.3234061, y: 0.057672948, z: -0.019752072, w: 0.9442946}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

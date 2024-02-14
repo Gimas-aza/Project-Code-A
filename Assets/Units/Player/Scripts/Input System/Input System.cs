@@ -73,54 +73,9 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Back"",
-                    ""type"": ""Button"",
-                    ""id"": ""21c4bddb-13dc-494a-976a-21d18fdc72ed"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Reload"",
                     ""type"": ""Button"",
                     ""id"": ""35b5f846-a33c-4d0b-bb49-a75b6a118d45"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""SelectMenu"",
-                    ""type"": ""Button"",
-                    ""id"": ""0b526173-080b-4097-9d9f-ef4c26643fda"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Skills"",
-                    ""type"": ""Button"",
-                    ""id"": ""27332baf-2848-434a-9a32-2992fef4437d"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Inventory"",
-                    ""type"": ""Button"",
-                    ""id"": ""4711981b-54d9-4b46-a085-ca1a602d333a"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Organizer"",
-                    ""type"": ""Button"",
-                    ""id"": ""3afccd95-c645-4498-8265-ffa6b62fc8ea"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -273,39 +228,6 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""9ef54ab3-0f6e-422d-ac43-6ba0520df30b"",
-                    ""path"": ""<Keyboard>/backspace"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Back"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""b4d1a5a3-7589-4cb8-a5c7-5c0477af00d8"",
-                    ""path"": ""<Keyboard>/escape"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Back"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""588d14ea-344f-48d3-b4cc-1241cb4bdb6c"",
-                    ""path"": ""<Gamepad>/buttonEast"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Back"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""12617157-04d2-4f6f-aa9a-bc5916315a30"",
                     ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
@@ -325,43 +247,74 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
                     ""action"": ""Reload"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""OpenMenu"",
+            ""id"": ""2e8bf662-e8dc-4f84-8057-efa4f9068ba2"",
+            ""actions"": [
+                {
+                    ""name"": ""New action"",
+                    ""type"": ""Button"",
+                    ""id"": ""d55117dd-623b-4c66-9855-db04812c454c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""SelectMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""e0272a51-81a2-4e9c-a7de-38e49eef213f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Skills"",
+                    ""type"": ""Button"",
+                    ""id"": ""cc3fcb76-164d-4672-87af-48427b432b35"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Inventory"",
+                    ""type"": ""Button"",
+                    ""id"": ""39757822-e566-42e3-8dd2-dafaebc2648d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Organizer"",
+                    ""type"": ""Button"",
+                    ""id"": ""5d1a1b3b-a597-4e2e-8a58-60e1a452c7f3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
                     ""name"": """",
-                    ""id"": ""20b1d6e1-5b6f-495c-8173-a554d60f1639"",
-                    ""path"": ""<Keyboard>/i"",
+                    ""id"": ""cd5305b3-5e8d-4ce8-b067-8f74754d2322"",
+                    ""path"": """",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Inventory"",
+                    ""action"": ""New action"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""d98b73ee-e115-43e8-87f2-9948beb5a0e1"",
-                    ""path"": ""<Keyboard>/v"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Skills"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""9dc503e3-9f81-44d2-88c4-91f47387f89a"",
-                    ""path"": ""<Keyboard>/b"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Organizer"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""f4ee9b01-b1ee-42bd-8efd-907736173d34"",
+                    ""id"": ""16f111dc-b282-4b72-95c5-81206e7baa5e"",
                     ""path"": ""<Gamepad>/select"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -372,12 +325,95 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""ad739db7-f98b-4df4-8a19-53d05f3fecee"",
+                    ""id"": ""64638d0d-57c0-453e-bd14-491e1e56c405"",
                     ""path"": ""<Keyboard>/tab"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""SelectMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e63baeb0-07bd-419a-8838-7e24e2d701c5"",
+                    ""path"": ""<Keyboard>/v"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Skills"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c2f91346-60c0-4aa0-b97d-e7d1337db5a9"",
+                    ""path"": ""<Keyboard>/i"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Inventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4853ab4b-fd11-48cd-b98b-6c1de8566a06"",
+                    ""path"": ""<Keyboard>/b"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Organizer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Menu"",
+            ""id"": ""71370b27-dd27-4486-a849-bb398b85c504"",
+            ""actions"": [
+                {
+                    ""name"": ""Back"",
+                    ""type"": ""Button"",
+                    ""id"": ""2958a4b1-fbb8-46c0-9c64-39e798e6765c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""7697900d-1b2a-444c-b3c6-bd8bd8050cf6"",
+                    ""path"": ""<Keyboard>/backspace"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Back"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""682b129b-3b03-45fb-8ddd-17174e9170c9"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Back"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c99437de-5744-4b4e-b727-8c3bd5f4517b"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Back"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -420,12 +456,17 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
         m_Player_CenterCamera = m_Player.FindAction("CenterCamera", throwIfNotFound: true);
         m_Player_SwitchWeapon = m_Player.FindAction("SwitchWeapon", throwIfNotFound: true);
         m_Player_Stealth = m_Player.FindAction("Stealth", throwIfNotFound: true);
-        m_Player_Back = m_Player.FindAction("Back", throwIfNotFound: true);
         m_Player_Reload = m_Player.FindAction("Reload", throwIfNotFound: true);
-        m_Player_SelectMenu = m_Player.FindAction("SelectMenu", throwIfNotFound: true);
-        m_Player_Skills = m_Player.FindAction("Skills", throwIfNotFound: true);
-        m_Player_Inventory = m_Player.FindAction("Inventory", throwIfNotFound: true);
-        m_Player_Organizer = m_Player.FindAction("Organizer", throwIfNotFound: true);
+        // OpenMenu
+        m_OpenMenu = asset.FindActionMap("OpenMenu", throwIfNotFound: true);
+        m_OpenMenu_Newaction = m_OpenMenu.FindAction("New action", throwIfNotFound: true);
+        m_OpenMenu_SelectMenu = m_OpenMenu.FindAction("SelectMenu", throwIfNotFound: true);
+        m_OpenMenu_Skills = m_OpenMenu.FindAction("Skills", throwIfNotFound: true);
+        m_OpenMenu_Inventory = m_OpenMenu.FindAction("Inventory", throwIfNotFound: true);
+        m_OpenMenu_Organizer = m_OpenMenu.FindAction("Organizer", throwIfNotFound: true);
+        // Menu
+        m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
+        m_Menu_Back = m_Menu.FindAction("Back", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -492,12 +533,7 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_CenterCamera;
     private readonly InputAction m_Player_SwitchWeapon;
     private readonly InputAction m_Player_Stealth;
-    private readonly InputAction m_Player_Back;
     private readonly InputAction m_Player_Reload;
-    private readonly InputAction m_Player_SelectMenu;
-    private readonly InputAction m_Player_Skills;
-    private readonly InputAction m_Player_Inventory;
-    private readonly InputAction m_Player_Organizer;
     public struct PlayerActions
     {
         private @InputSystem m_Wrapper;
@@ -507,12 +543,7 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
         public InputAction @CenterCamera => m_Wrapper.m_Player_CenterCamera;
         public InputAction @SwitchWeapon => m_Wrapper.m_Player_SwitchWeapon;
         public InputAction @Stealth => m_Wrapper.m_Player_Stealth;
-        public InputAction @Back => m_Wrapper.m_Player_Back;
         public InputAction @Reload => m_Wrapper.m_Player_Reload;
-        public InputAction @SelectMenu => m_Wrapper.m_Player_SelectMenu;
-        public InputAction @Skills => m_Wrapper.m_Player_Skills;
-        public InputAction @Inventory => m_Wrapper.m_Player_Inventory;
-        public InputAction @Organizer => m_Wrapper.m_Player_Organizer;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -537,24 +568,9 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
             @Stealth.started += instance.OnStealth;
             @Stealth.performed += instance.OnStealth;
             @Stealth.canceled += instance.OnStealth;
-            @Back.started += instance.OnBack;
-            @Back.performed += instance.OnBack;
-            @Back.canceled += instance.OnBack;
             @Reload.started += instance.OnReload;
             @Reload.performed += instance.OnReload;
             @Reload.canceled += instance.OnReload;
-            @SelectMenu.started += instance.OnSelectMenu;
-            @SelectMenu.performed += instance.OnSelectMenu;
-            @SelectMenu.canceled += instance.OnSelectMenu;
-            @Skills.started += instance.OnSkills;
-            @Skills.performed += instance.OnSkills;
-            @Skills.canceled += instance.OnSkills;
-            @Inventory.started += instance.OnInventory;
-            @Inventory.performed += instance.OnInventory;
-            @Inventory.canceled += instance.OnInventory;
-            @Organizer.started += instance.OnOrganizer;
-            @Organizer.performed += instance.OnOrganizer;
-            @Organizer.canceled += instance.OnOrganizer;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -574,24 +590,9 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
             @Stealth.started -= instance.OnStealth;
             @Stealth.performed -= instance.OnStealth;
             @Stealth.canceled -= instance.OnStealth;
-            @Back.started -= instance.OnBack;
-            @Back.performed -= instance.OnBack;
-            @Back.canceled -= instance.OnBack;
             @Reload.started -= instance.OnReload;
             @Reload.performed -= instance.OnReload;
             @Reload.canceled -= instance.OnReload;
-            @SelectMenu.started -= instance.OnSelectMenu;
-            @SelectMenu.performed -= instance.OnSelectMenu;
-            @SelectMenu.canceled -= instance.OnSelectMenu;
-            @Skills.started -= instance.OnSkills;
-            @Skills.performed -= instance.OnSkills;
-            @Skills.canceled -= instance.OnSkills;
-            @Inventory.started -= instance.OnInventory;
-            @Inventory.performed -= instance.OnInventory;
-            @Inventory.canceled -= instance.OnInventory;
-            @Organizer.started -= instance.OnOrganizer;
-            @Organizer.performed -= instance.OnOrganizer;
-            @Organizer.canceled -= instance.OnOrganizer;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -609,6 +610,130 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
+
+    // OpenMenu
+    private readonly InputActionMap m_OpenMenu;
+    private List<IOpenMenuActions> m_OpenMenuActionsCallbackInterfaces = new List<IOpenMenuActions>();
+    private readonly InputAction m_OpenMenu_Newaction;
+    private readonly InputAction m_OpenMenu_SelectMenu;
+    private readonly InputAction m_OpenMenu_Skills;
+    private readonly InputAction m_OpenMenu_Inventory;
+    private readonly InputAction m_OpenMenu_Organizer;
+    public struct OpenMenuActions
+    {
+        private @InputSystem m_Wrapper;
+        public OpenMenuActions(@InputSystem wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Newaction => m_Wrapper.m_OpenMenu_Newaction;
+        public InputAction @SelectMenu => m_Wrapper.m_OpenMenu_SelectMenu;
+        public InputAction @Skills => m_Wrapper.m_OpenMenu_Skills;
+        public InputAction @Inventory => m_Wrapper.m_OpenMenu_Inventory;
+        public InputAction @Organizer => m_Wrapper.m_OpenMenu_Organizer;
+        public InputActionMap Get() { return m_Wrapper.m_OpenMenu; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(OpenMenuActions set) { return set.Get(); }
+        public void AddCallbacks(IOpenMenuActions instance)
+        {
+            if (instance == null || m_Wrapper.m_OpenMenuActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_OpenMenuActionsCallbackInterfaces.Add(instance);
+            @Newaction.started += instance.OnNewaction;
+            @Newaction.performed += instance.OnNewaction;
+            @Newaction.canceled += instance.OnNewaction;
+            @SelectMenu.started += instance.OnSelectMenu;
+            @SelectMenu.performed += instance.OnSelectMenu;
+            @SelectMenu.canceled += instance.OnSelectMenu;
+            @Skills.started += instance.OnSkills;
+            @Skills.performed += instance.OnSkills;
+            @Skills.canceled += instance.OnSkills;
+            @Inventory.started += instance.OnInventory;
+            @Inventory.performed += instance.OnInventory;
+            @Inventory.canceled += instance.OnInventory;
+            @Organizer.started += instance.OnOrganizer;
+            @Organizer.performed += instance.OnOrganizer;
+            @Organizer.canceled += instance.OnOrganizer;
+        }
+
+        private void UnregisterCallbacks(IOpenMenuActions instance)
+        {
+            @Newaction.started -= instance.OnNewaction;
+            @Newaction.performed -= instance.OnNewaction;
+            @Newaction.canceled -= instance.OnNewaction;
+            @SelectMenu.started -= instance.OnSelectMenu;
+            @SelectMenu.performed -= instance.OnSelectMenu;
+            @SelectMenu.canceled -= instance.OnSelectMenu;
+            @Skills.started -= instance.OnSkills;
+            @Skills.performed -= instance.OnSkills;
+            @Skills.canceled -= instance.OnSkills;
+            @Inventory.started -= instance.OnInventory;
+            @Inventory.performed -= instance.OnInventory;
+            @Inventory.canceled -= instance.OnInventory;
+            @Organizer.started -= instance.OnOrganizer;
+            @Organizer.performed -= instance.OnOrganizer;
+            @Organizer.canceled -= instance.OnOrganizer;
+        }
+
+        public void RemoveCallbacks(IOpenMenuActions instance)
+        {
+            if (m_Wrapper.m_OpenMenuActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IOpenMenuActions instance)
+        {
+            foreach (var item in m_Wrapper.m_OpenMenuActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_OpenMenuActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public OpenMenuActions @OpenMenu => new OpenMenuActions(this);
+
+    // Menu
+    private readonly InputActionMap m_Menu;
+    private List<IMenuActions> m_MenuActionsCallbackInterfaces = new List<IMenuActions>();
+    private readonly InputAction m_Menu_Back;
+    public struct MenuActions
+    {
+        private @InputSystem m_Wrapper;
+        public MenuActions(@InputSystem wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Back => m_Wrapper.m_Menu_Back;
+        public InputActionMap Get() { return m_Wrapper.m_Menu; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MenuActions set) { return set.Get(); }
+        public void AddCallbacks(IMenuActions instance)
+        {
+            if (instance == null || m_Wrapper.m_MenuActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_MenuActionsCallbackInterfaces.Add(instance);
+            @Back.started += instance.OnBack;
+            @Back.performed += instance.OnBack;
+            @Back.canceled += instance.OnBack;
+        }
+
+        private void UnregisterCallbacks(IMenuActions instance)
+        {
+            @Back.started -= instance.OnBack;
+            @Back.performed -= instance.OnBack;
+            @Back.canceled -= instance.OnBack;
+        }
+
+        public void RemoveCallbacks(IMenuActions instance)
+        {
+            if (m_Wrapper.m_MenuActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IMenuActions instance)
+        {
+            foreach (var item in m_Wrapper.m_MenuActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_MenuActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public MenuActions @Menu => new MenuActions(this);
     private int m_PlayerSchemeIndex = -1;
     public InputControlScheme PlayerScheme
     {
@@ -625,11 +750,18 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
         void OnCenterCamera(InputAction.CallbackContext context);
         void OnSwitchWeapon(InputAction.CallbackContext context);
         void OnStealth(InputAction.CallbackContext context);
-        void OnBack(InputAction.CallbackContext context);
         void OnReload(InputAction.CallbackContext context);
+    }
+    public interface IOpenMenuActions
+    {
+        void OnNewaction(InputAction.CallbackContext context);
         void OnSelectMenu(InputAction.CallbackContext context);
         void OnSkills(InputAction.CallbackContext context);
         void OnInventory(InputAction.CallbackContext context);
         void OnOrganizer(InputAction.CallbackContext context);
+    }
+    public interface IMenuActions
+    {
+        void OnBack(InputAction.CallbackContext context);
     }
 }

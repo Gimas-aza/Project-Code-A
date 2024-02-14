@@ -11,24 +11,24 @@ namespace Assets.Units.Player
         protected Camera MainCamera;
 
         [Inject]
-        private void Constructor(Camera mainCamera)
+        private void Constructor(Camera mainCamera, InputSystem inputSystem)
         {
             MainCamera = mainCamera;
+            InputSystem = inputSystem;
         }
 
         protected virtual void Awake()
         {
-            InputSystem = new InputSystem();
         }
 
         protected virtual void OnEnable()
         {
-            InputSystem.Enable();
+            InputSystem.Player.Enable();
         }
 
         protected virtual void OnDisable()
         {
-            InputSystem.Disable();
+            InputSystem.Player.Disable();
         }
 
         protected Vector3 GetDirection(Vector2 moveDirection)

@@ -51,54 +51,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Back",
-                    "type": "Button",
-                    "id": "21c4bddb-13dc-494a-976a-21d18fdc72ed",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Reload",
                     "type": "Button",
                     "id": "35b5f846-a33c-4d0b-bb49-a75b6a118d45",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "SelectMenu",
-                    "type": "Button",
-                    "id": "0b526173-080b-4097-9d9f-ef4c26643fda",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Skills",
-                    "type": "Button",
-                    "id": "27332baf-2848-434a-9a32-2992fef4437d",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Inventory",
-                    "type": "Button",
-                    "id": "4711981b-54d9-4b46-a085-ca1a602d333a",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Organizer",
-                    "type": "Button",
-                    "id": "3afccd95-c645-4498-8265-ffa6b62fc8ea",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -251,39 +206,6 @@
                 },
                 {
                     "name": "",
-                    "id": "9ef54ab3-0f6e-422d-ac43-6ba0520df30b",
-                    "path": "<Keyboard>/backspace",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Back",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "b4d1a5a3-7589-4cb8-a5c7-5c0477af00d8",
-                    "path": "<Keyboard>/escape",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Back",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "588d14ea-344f-48d3-b4cc-1241cb4bdb6c",
-                    "path": "<Gamepad>/buttonEast",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Back",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "12617157-04d2-4f6f-aa9a-bc5916315a30",
                     "path": "<Gamepad>/buttonWest",
                     "interactions": "",
@@ -303,43 +225,74 @@
                     "action": "Reload",
                     "isComposite": false,
                     "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "OpenMenu",
+            "id": "2e8bf662-e8dc-4f84-8057-efa4f9068ba2",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "d55117dd-623b-4c66-9855-db04812c454c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
+                    "name": "SelectMenu",
+                    "type": "Button",
+                    "id": "e0272a51-81a2-4e9c-a7de-38e49eef213f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Skills",
+                    "type": "Button",
+                    "id": "cc3fcb76-164d-4672-87af-48427b432b35",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Inventory",
+                    "type": "Button",
+                    "id": "39757822-e566-42e3-8dd2-dafaebc2648d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Organizer",
+                    "type": "Button",
+                    "id": "5d1a1b3b-a597-4e2e-8a58-60e1a452c7f3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
                     "name": "",
-                    "id": "20b1d6e1-5b6f-495c-8173-a554d60f1639",
-                    "path": "<Keyboard>/i",
+                    "id": "cd5305b3-5e8d-4ce8-b067-8f74754d2322",
+                    "path": "",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Inventory",
+                    "action": "New action",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "d98b73ee-e115-43e8-87f2-9948beb5a0e1",
-                    "path": "<Keyboard>/v",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Skills",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "9dc503e3-9f81-44d2-88c4-91f47387f89a",
-                    "path": "<Keyboard>/b",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Organizer",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "f4ee9b01-b1ee-42bd-8efd-907736173d34",
+                    "id": "16f111dc-b282-4b72-95c5-81206e7baa5e",
                     "path": "<Gamepad>/select",
                     "interactions": "",
                     "processors": "",
@@ -350,12 +303,95 @@
                 },
                 {
                     "name": "",
-                    "id": "ad739db7-f98b-4df4-8a19-53d05f3fecee",
+                    "id": "64638d0d-57c0-453e-bd14-491e1e56c405",
                     "path": "<Keyboard>/tab",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "SelectMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e63baeb0-07bd-419a-8838-7e24e2d701c5",
+                    "path": "<Keyboard>/v",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Skills",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c2f91346-60c0-4aa0-b97d-e7d1337db5a9",
+                    "path": "<Keyboard>/i",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Inventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4853ab4b-fd11-48cd-b98b-6c1de8566a06",
+                    "path": "<Keyboard>/b",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Organizer",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Menu",
+            "id": "71370b27-dd27-4486-a849-bb398b85c504",
+            "actions": [
+                {
+                    "name": "Back",
+                    "type": "Button",
+                    "id": "2958a4b1-fbb8-46c0-9c64-39e798e6765c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "7697900d-1b2a-444c-b3c6-bd8bd8050cf6",
+                    "path": "<Keyboard>/backspace",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Back",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "682b129b-3b03-45fb-8ddd-17174e9170c9",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Back",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c99437de-5744-4b4e-b727-8c3bd5f4517b",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Back",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

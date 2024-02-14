@@ -8,6 +8,7 @@ namespace Assets.UI.FSM
     public class FsmMenuParams
     {
         public GameObject MenuSelect;
+        public GameObject MenuSwitch;
         public GameObject InputButton;
         public GameObject StatisticMenu;
 
@@ -18,6 +19,11 @@ namespace Assets.UI.FSM
             MenuSelect.SetActive(isOpen);
             HideInterface(isOpen);
             SetPause(isOpen);
+        }
+
+        public void SetMenuSwitch(bool isShow)
+        {
+            MenuSwitch.SetActive(isShow);
         }
 
         public void HideInterface(bool isHide)

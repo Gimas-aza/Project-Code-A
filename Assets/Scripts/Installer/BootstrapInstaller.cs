@@ -8,10 +8,19 @@ public class BootstrapInstaller : MonoInstaller
 {
     public override void InstallBindings()
     {
+        BindInputSystem();
         BindPlayer();
         BindUIVatilityMonitor();
         BindCamera();
         BindPlayerSkills();
+    }
+
+    private void BindInputSystem()
+    {
+        Container
+            .Bind<InputSystem>()
+            .AsSingle()
+            .NonLazy();
     }
 
     private void BindPlayer()
