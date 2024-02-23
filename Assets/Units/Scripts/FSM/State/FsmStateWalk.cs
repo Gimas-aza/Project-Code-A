@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AI;
 using Assets.FSM;
-using Assets.Units.Player;
 
 namespace Assets.Units.FSM
 {
@@ -31,9 +30,8 @@ namespace Assets.Units.FSM
         private float _multiplierSpeed;
         private float _timeToReturnWalk;
         private float _distanceStop;
-        private PlayerSkills _skills;
 
-        public FsmStateWalk(Fsm fsm, FsmEnemyParams fsmEnemyParams, PlayerSkills skills) : base(fsm)
+        public FsmStateWalk(Fsm fsm, FsmEnemyParams fsmEnemyParams) : base(fsm)
         {
             _fsm = fsm;
             _fsmEnemyParams = fsmEnemyParams;
@@ -50,8 +48,7 @@ namespace Assets.Units.FSM
             _timeToReturnWalk = fsmEnemyParams.TimeToReturnWalk;
             _distanceStop = fsmEnemyParams.DistanceStop;
 
-            _tmpDetectionTimer = _detectionTimerBegin + (_detectionTimerBegin * skills.Cloaking);
-            _skills = skills;
+            _tmpDetectionTimer = _detectionTimerBegin + _detectionTimerBegin;
         }
 
         public override void Enter()
@@ -69,16 +66,13 @@ namespace Assets.Units.FSM
 
             _unitEnemy = _unitTransform.GetComponent<EnemyUnit>();
             _unitEnemy.OnDamageTaken += TryMoveLastPointPlayer;
-            _player.OnActiveStealth += (bool value) => _unitEnemy.IsIncreaseDamage = value;
         }
 
         public override void Exit()
         {
             _unitEnemy.OnDamageTaken -= TryMoveLastPointPlayer;
-            _player.OnActiveStealth -= (bool value) => _unitEnemy.IsIncreaseDamage = value;
 
             _navMeshAgent.speed = _beginSpeed;
-            _unitEnemy.IsIncreaseDamage = false;
 
             ResetDetectionTimer();
         }
@@ -94,7 +88,7 @@ namespace Assets.Units.FSM
             {
                 Movement();
                 SetView(_beginFov, _viewDistance);
-                _tmpDetectionTimer = _detectionTimerBegin + (_detectionTimerBegin * _skills.Cloaking);
+                _tmpDetectionTimer = _detectionTimerBegin + _detectionTimerBegin;
             }
 
             FindTargetPlayer();

@@ -12,7 +12,6 @@ public class BootstrapInstaller : MonoInstaller
         BindPlayer();
         BindUIVatilityMonitor();
         BindCamera();
-        BindPlayerSkills();
     }
 
     private void BindInputSystem()
@@ -48,12 +47,5 @@ public class BootstrapInstaller : MonoInstaller
             .FromComponentInHierarchy()
             .AsSingle()
             .NonLazy();
-    }
-
-    private void BindPlayerSkills()
-    {
-        Container
-            .Bind<PlayerSkills>()
-            .AsSingle();
     }
 }

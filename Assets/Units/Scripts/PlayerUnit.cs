@@ -16,7 +16,6 @@ namespace Assets.Units
         [Header("EnergyUse")]
         [SerializeField, Min(0f)] private float _energyUseInStealth = 1f; 
         [SerializeField, Min(0f)] private float _energyUseInStealthMove = 2f;
-        [SerializeField] private PlayerSkills _playerSkills;
 
         private VitalityMonitor _vitalityMonitor;
         private PlayerMove _playerMove;
@@ -24,7 +23,6 @@ namespace Assets.Units
         private Coroutine _actionPointsCoroutine;
         private IStealthAbility _energyAbility;
 
-        public SkillsBuilder Skills { get; set; }
         public float MaxActionPoints
         {
             get => _maxActionPoints;
@@ -40,18 +38,9 @@ namespace Assets.Units
         public UnityAction<bool> OnActiveStealth;
 
         [Inject]
-        private void Constructor(VitalityMonitor vitalityMonitor, PlayerSkills skills)
+        private void Constructor(VitalityMonitor vitalityMonitor)
         {
             _vitalityMonitor = vitalityMonitor;
-            _playerSkills = skills;
-        }
-
-        private void Awake()
-        {
-            Skills = new SkillsBuilder(_playerSkills);
-            Skills.SetStealthDamage(3);
-            Skills.SetCloaking(3);
-            Skills.Build();
         }
 
         private void Start()
@@ -112,15 +101,22 @@ namespace Assets.Units
 
         private IEnumerator TakeOffActionPointsWithinTime(int value, float time)
         {
+            float deltaTime = 0; 
             while (ActionPoints > 0)
             {
                 float multiplierTime = _energyAbility.GetEnergyConsumption();
+                deltaTime += Time.deltaTime;
                 
-                TakeOffActionPoints(value);
+                if (deltaTime >= time / multiplierTime)
+                {
+                    deltaTime = 0;
+                    TakeOffActionPoints(value);
 
-                if (ActionPoints == 0)
-                    ActivateStealth(); 
-                yield return new WaitForSeconds(time / multiplierTime);
+                    if (ActionPoints == 0)
+                        ActivateStealth(); 
+                }
+
+                yield return null;
             }
         }
         
