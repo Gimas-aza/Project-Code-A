@@ -10,8 +10,11 @@ namespace Assets.Units
 {
     public class PlayerUnit : Unit
     {
-        [SerializeField] private float _maxActionPoints = 100f;
-        [SerializeField] private float _actionPoints = 100f;
+        [SerializeField, Min(0f)] private float _maxActionPoints = 100f;
+        [SerializeField, Min(0f)] private float _actionPoints = 100f;
+        [Header("EnergyUse")]
+        [SerializeField, Min(0f)] private float _energyUseInStealth = 1f; 
+        [SerializeField, Min(0f)] private float _energyUseInStealthMove = 2f;
         [SerializeField] private PlayerSkills _playerSkills;
 
         private VitalityMonitor _vitalityMonitor;
@@ -106,20 +109,20 @@ namespace Assets.Units
 
         private IEnumerator TakeOffActionPointsWithinTime(int value, float time)
         {
-            float multiplierTime = 1;
+            float multiplierTime;
 
             while (ActionPoints > 0)
             {
                 if (_playerMove.IsMove)
-                    multiplierTime = 0.5f;
+                    multiplierTime = _energyUseInStealthMove;
                 else 
-                    multiplierTime = 1;
+                    multiplierTime = _energyUseInStealth;
                 
                 TakeOffActionPoints(value);
 
                 if (ActionPoints == 0)
                     ActivateStealth(); 
-                yield return new WaitForSeconds(time * multiplierTime);
+                yield return new WaitForSeconds(time / multiplierTime);
             }
         }
         

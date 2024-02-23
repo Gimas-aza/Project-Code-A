@@ -21,7 +21,7 @@ namespace Assets.UI.FSM
             _fsmMenuParams.SetMenu(true); 
             _fsmMenuParams.SetMenuSwitch(false);
             _hackMenu.gameObject.SetActive(true);
-            _hackMenu.StartMiniGame(Difficulty.Hard);
+            _hackMenu.StartMiniGame(Difficulty.Easy);
         }
 
         public override void Exit()

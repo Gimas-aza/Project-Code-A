@@ -13,8 +13,6 @@ namespace Assets.UI.FSM
         [SerializeField] private RadioGame _hackMenu;
         [SerializeField] private FsmMenuParams _fsmMenuParams = new();
 
-        private bool _activeInputMenu;
-        private bool _activeInputPlayer = true;
         private InputSystem _inputSystem;
         private InputAction _buttonSelect;
         private InputAction _buttonOrganizerMenu;
@@ -27,6 +25,7 @@ namespace Assets.UI.FSM
         private void Constructor(InputSystem inputActions)
         {
             _inputSystem = inputActions;
+            _fsmMenuParams.SetInputSystem(_inputSystem);
         }
 
         private void Awake()
@@ -82,64 +81,52 @@ namespace Assets.UI.FSM
             if (!_fsmMenuParams.MenuSelect.activeSelf)
             {
                 _fsm.SetState<FsmStateMenuSelect>();
-                EnableMenuInput();
             }
             else
             {
                 _fsm.SetState<FsmStateGame>();
-                EnablePlayerInput(); 
             }
         }
 
         private void OpenOrganizerMenu(InputAction.CallbackContext context)
         {
             _fsm.SetState<FsmStateOrganizer>();
-            EnableMenuInput();
         } 
 
         private void OpenSkillsMenu(InputAction.CallbackContext context)
         {
             _fsm.SetState<FsmStateSkills>();
-            EnableMenuInput();
         }
 
         private void OpenInventoryMenu(InputAction.CallbackContext context)
         {
             _fsm.SetState<FsmStateInventory>();
-            EnableMenuInput();
         }
 
         [ContextMenu(nameof(OpenHackMenu))]
         private void OpenHackMenu()
         {
             _fsm.SetState<FsmStateHack>();
-            EnableMenuInput();
         }
 
         private void CloseMenu(InputAction.CallbackContext context)
         {
             _fsm.SetState<FsmStateGame>();
-            EnablePlayerInput();
+            Debug.Log("Close Menu");
         }
 
+        [ContextMenu(nameof(EnableMenuInput))]
         private void EnableMenuInput()
         {
-            if (_activeInputMenu) return;
-
             _inputSystem.Player.Disable();
             _inputSystem.Menu.Enable();
-            _activeInputMenu = true;
-            _activeInputPlayer = false;
         }
 
+        [ContextMenu(nameof(EnablePlayerInput))]
         private void EnablePlayerInput()
         {
-            if (_activeInputPlayer) return;
-
             _inputSystem.Menu.Disable();
             _inputSystem.Player.Enable();
-            _activeInputMenu = false;
-            _activeInputPlayer = true;
         }
     }
 }
