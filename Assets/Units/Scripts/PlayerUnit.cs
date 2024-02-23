@@ -4,10 +4,11 @@ using Assets.UI;
 using Assets.Units.Player;
 using UnityEngine.Events;
 using System.Collections;
-using System;
+using Assets.Units.Abilities.Stealth;
 
 namespace Assets.Units
 {
+    [RequireComponent(typeof(StealthAbilityDummy))]
     public class PlayerUnit : Unit
     {
         [SerializeField, Min(0f)] private float _maxActionPoints = 100f;
@@ -21,6 +22,7 @@ namespace Assets.Units
         private PlayerMove _playerMove;
         private PlayerShoot _playerShoot;
         private Coroutine _actionPointsCoroutine;
+        private IStealthAbility _energyAbility;
 
         public SkillsBuilder Skills { get; set; }
         public float MaxActionPoints
@@ -58,6 +60,7 @@ namespace Assets.Units
             _playerShoot ??= GetComponent<PlayerShoot>();
             _vitalityMonitor.ChangeHealth((int) Health, MaxHealth);
             _vitalityMonitor.ChangeActionPoints((int) ActionPoints, MaxActionPoints);
+            _energyAbility = GetComponent<IStealthAbility>();
         }
 
         public override void ApplyDamage(float damage)
@@ -109,14 +112,9 @@ namespace Assets.Units
 
         private IEnumerator TakeOffActionPointsWithinTime(int value, float time)
         {
-            float multiplierTime;
-
             while (ActionPoints > 0)
             {
-                if (_playerMove.IsMove)
-                    multiplierTime = _energyUseInStealthMove;
-                else 
-                    multiplierTime = _energyUseInStealth;
+                float multiplierTime = _energyAbility.GetEnergyConsumption();
                 
                 TakeOffActionPoints(value);
 
