@@ -16,7 +16,7 @@ namespace Assets.Units.Abilities.Stealth
             _playerMove = GetComponent<PlayerMove>();
 
         private void OnValidate() =>
-            _level = Math.Clamp(_level, 0, _abilityConfig?.Levels?.Length + 1 ?? 0);
+            _level = Math.Clamp(_level, 0, _abilityConfig?.Levels + 1 ?? 0);
 
         public float GetEnergyConsumption() =>
             GetPlainEnergyConsumption() * GetEnergyConsumptionModifier();
@@ -25,8 +25,8 @@ namespace Assets.Units.Abilities.Stealth
             _playerMove.IsMove ? _abilityConfig.EnergyUseInStealthMove : _abilityConfig.EnergyUseInStealth;
 
         private float GetEnergyConsumptionModifier() =>
-            _level > 0 && _level <= _abilityConfig.Levels.Length ?
-                _abilityConfig.Levels[_level - 1].EnergyConsumptionModifier :
+            _abilityConfig.TryGetLevelData(_level - 1, out StealthAbilityLevel levelData) ?
+                levelData.EnergyConsumptionModifier :
                 1;
     }
 }

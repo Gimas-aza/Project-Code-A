@@ -1,7 +1,6 @@
 ﻿namespace Assets.Units.Abilities.Common
 {
-    // todo: rework to interface
-    public abstract class AbstractAbility<TConfig, TLevelData>
+    public interface IGenericAbility<TConfig, TLevelData>
         where TConfig : AbilityConfig<TLevelData>
         where TLevelData : AbilityLevel { }
 }
