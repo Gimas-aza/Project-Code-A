@@ -8724,7 +8724,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 766294630}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.35376263, y: 0.057004284, z: -0.021606095, w: 0.9333465}
+  m_LocalRotation: {x: 0.35376263, y: 0.057004336, z: -0.021606125, w: 0.9333465}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -28274,25 +28274,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 100
   _health: 100
-  IsIncreaseDamage: 0
   _maxActionPoints: 100
   _actionPoints: 100
   _energyUseInStealth: 0.2
   _energyUseInStealthMove: 2
-  _playerSkills:
-    _stealthDamage: 0
-    _cloaking: 0
-    _distraction: 0
-    _stealthyHacking: 0
-    _dataControl: 0
-    _tacticalVision: 0
-    _reconnaissance: 0
-    _hacking: 0
-    _increasedEnergy: 0
-    _chargingSpeed: 0
-    _increasedHealth: 0
-    _energyShield: 0
-    _movementSpeed: 0
 --- !u!208 &1724705262
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -31448,6 +31433,68 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4176546312612380300, guid: cfd3311072b88f54e9ce572aba51cf44, type: 3}
   m_PrefabInstance: {fileID: 284418476}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2009115757
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2009115760}
+  - component: {fileID: 2009115759}
+  - component: {fileID: 2009115761}
+  m_Layer: 0
+  m_Name: TestSaveSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2009115759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009115757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86caea120b8fb264a933295253f3a4b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _storageService: {fileID: 2009115761}
+  _counter: 12
+  _isTest: 1
+  _name: Gimas
+--- !u!4 &2009115760
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009115757}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 795.5778, y: 514.62555, z: 7.597024}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2009115761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009115757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1d2ca1b753160246871648a516e8f25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _key: test
 --- !u!1001 &2041386268
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34199,3 +34246,4 @@ SceneRoots:
   - {fileID: 1724705259}
   - {fileID: 124723459}
   - {fileID: 674629744}
+  - {fileID: 2009115760}
