@@ -6,6 +6,6 @@ namespace Minimap
     {
         Vector2 WorldPosition { get; }
         Angle Angle { get; }
-        Texture2D Icon { get; }
+        Sprite Icon { get; }
     }
 }

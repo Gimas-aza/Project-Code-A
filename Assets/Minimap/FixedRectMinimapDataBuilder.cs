@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace Minimap
@@ -8,12 +6,8 @@ namespace Minimap
     public class FixedRectMinimapDataBuilder : MonoBehaviour, IMinimapDataBuilder
     {
         [SerializeField] private List<MinimapObject> _objects;
-        private readonly Func<MinimapObject, MinimapData> _selectionFunc = CreateMinimapData;
-        
-        public IEnumerable<MinimapData> BuildData() =>
-            _objects.Select(_selectionFunc);
 
-        private static MinimapData CreateMinimapData(MinimapObject minimapObject) =>
-            new(minimapObject);
+        public IEnumerable<IMinimapObject> BuildObjects() =>
+            _objects;
     }
 }

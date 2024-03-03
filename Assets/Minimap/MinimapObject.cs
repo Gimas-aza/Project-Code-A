@@ -4,13 +4,13 @@ namespace Minimap
 {
     public class MinimapObject : MonoBehaviour, IMinimapObject
     {
-        [SerializeField] private Texture2D _icon;
+        [SerializeField] private Sprite _icon;
 
         public Vector2 WorldPosition => GetPosition();
 
         public Angle Angle => GetAngle();
 
-        public Texture2D Icon => _icon;
+        public Sprite Icon => _icon;
 
         private Vector2 GetPosition()
         {

@@ -10,6 +10,8 @@ namespace Minimap
         
         public float Extent => _extent;
 
+        public Vector2 WorldPosition => new(transform.position.x, transform.position.z);
+
 #if UNITY_EDITOR
         private void OnDrawGizmosSelected()
         {

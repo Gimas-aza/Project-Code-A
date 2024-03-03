@@ -4,6 +4,6 @@ namespace Minimap
 {
     public interface IMinimapDrawer
     {
-        void Draw(IEnumerable<MinimapData> data);
+        void Draw(IEnumerable<IMinimapObject> objects);
     }
 }

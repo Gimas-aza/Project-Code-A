@@ -4,6 +4,6 @@ namespace Minimap
 {
     public interface IMinimapDataBuilder
     {
-        IEnumerable<MinimapData> BuildData();
+        IEnumerable<IMinimapObject> BuildObjects();
     }
 }
