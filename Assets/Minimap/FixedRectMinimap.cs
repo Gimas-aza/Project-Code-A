@@ -5,9 +5,9 @@ namespace Minimap
     public class FixedRectMinimap : MonoBehaviour
     {
         [SerializeField] private FixedRectMinimapDrawer _drawer;
-        [SerializeField] private FixedRectMinimapDataBuilder _dataBuilder;
+        [SerializeField] private FixedRectMinimapObjectsProvider _objectsProvider;
 
         private void Update() =>
-            _drawer.Draw(_dataBuilder.BuildObjects());
+            _drawer.Draw(_objectsProvider.GetObjects());
     }
 }

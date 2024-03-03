@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace Minimap
 {
-    public class FixedRectMinimapDataBuilder : MonoBehaviour, IMinimapDataBuilder
+    public class FixedRectMinimapObjectsProvider : MonoBehaviour, IMinimapObjectsProvider
     {
         [SerializeField] private List<MinimapObject> _objects;
 
-        public IEnumerable<IMinimapObject> BuildObjects() =>
+        public IEnumerable<IMinimapObject> GetObjects() =>
             _objects;
 
         public void Add(MinimapObject minimapObject)

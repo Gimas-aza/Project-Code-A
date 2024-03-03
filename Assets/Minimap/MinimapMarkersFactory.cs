@@ -20,7 +20,7 @@ namespace Minimap
             
             Transform transform = obj.transform;
             transform.SetParent(_parent, false);
-            transform.localEulerAngles = new Vector3(90, 0, 0);
+            transform.forward = Vector3.down;
             
             return new MinimapMarker(obj.AddComponent<SpriteRenderer>());
         }

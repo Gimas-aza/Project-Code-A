@@ -12,7 +12,7 @@ namespace Minimap
         }
 
         private static float FilterAngle(in float input) =>
-            -180f + Mathf.Repeat(input, 360); // [-180, 180) range
+            Mathf.Repeat(input, 360); // [0, 360) range
 
         public static implicit operator float(Angle angle) =>
             angle._value;

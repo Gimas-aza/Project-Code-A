@@ -15,10 +15,10 @@ namespace Minimap
         private Vector2 GetPosition()
         {
             Vector3 pos = transform.position;
-            return new Vector2(pos.x, pos.y);
+            return new Vector2(pos.x, pos.z);
         }
 
         private Angle GetAngle() =>
-            (Angle) transform.rotation.eulerAngles.y;
+            (Angle) transform.eulerAngles.y;
     }
 }

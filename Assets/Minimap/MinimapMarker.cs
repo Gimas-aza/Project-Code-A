@@ -15,10 +15,21 @@ namespace Minimap
         {
             _renderer.sprite = icon;
 
-            _renderer.transform.SetLocalPositionAndRotation(
-                new Vector3(position.x, position.y),
-                Quaternion.Euler(0, angle, 0)
+            Transform transform = _renderer.transform;
+            
+            transform.SetLocalPositionAndRotation(
+                new Vector3(position.x, 0, position.y),
+                Quaternion.Euler(transform.localEulerAngles.x, 0, -angle)
             );
         }
+
+        public void Show() =>
+            SetVisibility(true);
+
+        public void Hide() =>
+            SetVisibility(false);
+
+        private void SetVisibility(bool visible) =>
+            _renderer.forceRenderingOff = !visible;
     }
 }

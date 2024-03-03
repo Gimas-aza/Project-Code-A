@@ -6,9 +6,11 @@ namespace Minimap
     public class FixedRectMinimapDrawer : MonoBehaviour, IMinimapDrawer
     {
         [SerializeField] private MinimapCenter _center;
+        [SerializeField, Min(0)] private float _size = 1f;
         
         private MinimapMarkersFactory _rendererFactory;
         private List<MinimapMarker> _markers;
+        private int _lastMarkersCount;
 
         private void Awake()
         {
@@ -18,21 +20,38 @@ namespace Minimap
 
         public void Draw(IEnumerable<IMinimapObject> objects)
         {
-            var i = 0;
+            var markersDrawn = 0;
 
-            foreach (IMinimapObject minimapData in objects)
+            foreach (IMinimapObject minimapObject in objects)
             {
-                if (!InCenterExtent(minimapData))
+                if (!InCenterExtent(minimapObject))
                     continue;
-                
-                MinimapMarker marker = GetMarker(i++);
 
-                Vector2 diff = minimapData.WorldPosition - _center.WorldPosition;
-                diff /= _center.Extent;
-
-                marker.Set(diff, minimapData.Angle, minimapData.Icon);
+                DrawMarker(GetMarker(markersDrawn++), minimapObject);
             }
+            
+            HideTrailingMarkers(markersDrawn);
         }
+
+        private void DrawMarker(MinimapMarker marker, IMinimapObject minimapObject)
+        {
+            Vector2 markerPos = CalculateMarkerNormalizedPos(minimapObject);
+            markerPos *= _size;
+
+            marker.Set(markerPos, minimapObject.Angle, minimapObject.Icon);
+        }
+
+        private void HideTrailingMarkers(int markersDrawn)
+        {
+            if (_lastMarkersCount > markersDrawn)
+                for (int j = markersDrawn; j < _lastMarkersCount; j++)
+                    _markers[j].Hide();
+            
+            _lastMarkersCount = markersDrawn;
+        }
+
+        private Vector2 CalculateMarkerNormalizedPos(IMinimapObject minimapData) =>
+            (minimapData.WorldPosition - _center.WorldPosition) / _center.Extent;
 
         private bool InCenterExtent(in IMinimapObject minimapObject)
         {
@@ -47,12 +66,17 @@ namespace Minimap
         private MinimapMarker GetMarker(int iteration)
         {
             if (iteration < _markers.Count)
-                return _markers[iteration];
+            {
+                MinimapMarker cachedMarker = _markers[iteration];
+                cachedMarker.Show();
+                
+                return cachedMarker;
+            }
 
-            MinimapMarker marker = _rendererFactory.Create();
-            _markers.Add(marker);
+            MinimapMarker createdMarker = _rendererFactory.Create();
+            _markers.Add(createdMarker);
 
-            return marker;
+            return createdMarker;
         }
     }
 }
