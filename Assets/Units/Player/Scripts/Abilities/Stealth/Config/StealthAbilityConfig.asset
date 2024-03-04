@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d15eea331f9ca04199a5156148127ec, type: 3}
   m_Name: StealthAbilityConfig
   m_EditorClassIdentifier: 
-  <Levels>k__BackingField:
-  - {fileID: 11400000, guid: 7e3db563c4ee7324a80253514e0ecfce, type: 2}
+  _levels: []
   _energyUseInStealth: 0.2
   _energyUseInStealthMove: 2

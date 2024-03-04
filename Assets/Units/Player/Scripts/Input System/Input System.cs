@@ -64,6 +64,15 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Reload"",
+                    ""type"": ""Button"",
+                    ""id"": ""35b5f846-a33c-4d0b-bb49-a75b6a118d45"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Stealth"",
                     ""type"": ""Button"",
                     ""id"": ""59dd50b7-d061-4cf7-a581-a9955d87188c"",
@@ -73,9 +82,9 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Reload"",
+                    ""name"": ""Shield"",
                     ""type"": ""Button"",
-                    ""id"": ""35b5f846-a33c-4d0b-bb49-a75b6a118d45"",
+                    ""id"": ""72325da1-35fa-4199-b79f-a107977915f8"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -245,6 +254,28 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Reload"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3ebd106b-7163-4493-ad57-286f88029b9d"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shield"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4f532523-3831-44cd-9eec-e60f5431a67f"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shield"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -455,8 +486,9 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
         m_Player_CenterCamera = m_Player.FindAction("CenterCamera", throwIfNotFound: true);
         m_Player_SwitchWeapon = m_Player.FindAction("SwitchWeapon", throwIfNotFound: true);
-        m_Player_Stealth = m_Player.FindAction("Stealth", throwIfNotFound: true);
         m_Player_Reload = m_Player.FindAction("Reload", throwIfNotFound: true);
+        m_Player_Stealth = m_Player.FindAction("Stealth", throwIfNotFound: true);
+        m_Player_Shield = m_Player.FindAction("Shield", throwIfNotFound: true);
         // OpenMenu
         m_OpenMenu = asset.FindActionMap("OpenMenu", throwIfNotFound: true);
         m_OpenMenu_Newaction = m_OpenMenu.FindAction("New action", throwIfNotFound: true);
@@ -532,8 +564,9 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Shoot;
     private readonly InputAction m_Player_CenterCamera;
     private readonly InputAction m_Player_SwitchWeapon;
-    private readonly InputAction m_Player_Stealth;
     private readonly InputAction m_Player_Reload;
+    private readonly InputAction m_Player_Stealth;
+    private readonly InputAction m_Player_Shield;
     public struct PlayerActions
     {
         private @InputSystem m_Wrapper;
@@ -542,8 +575,9 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
         public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
         public InputAction @CenterCamera => m_Wrapper.m_Player_CenterCamera;
         public InputAction @SwitchWeapon => m_Wrapper.m_Player_SwitchWeapon;
-        public InputAction @Stealth => m_Wrapper.m_Player_Stealth;
         public InputAction @Reload => m_Wrapper.m_Player_Reload;
+        public InputAction @Stealth => m_Wrapper.m_Player_Stealth;
+        public InputAction @Shield => m_Wrapper.m_Player_Shield;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -565,12 +599,15 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
             @SwitchWeapon.started += instance.OnSwitchWeapon;
             @SwitchWeapon.performed += instance.OnSwitchWeapon;
             @SwitchWeapon.canceled += instance.OnSwitchWeapon;
-            @Stealth.started += instance.OnStealth;
-            @Stealth.performed += instance.OnStealth;
-            @Stealth.canceled += instance.OnStealth;
             @Reload.started += instance.OnReload;
             @Reload.performed += instance.OnReload;
             @Reload.canceled += instance.OnReload;
+            @Stealth.started += instance.OnStealth;
+            @Stealth.performed += instance.OnStealth;
+            @Stealth.canceled += instance.OnStealth;
+            @Shield.started += instance.OnShield;
+            @Shield.performed += instance.OnShield;
+            @Shield.canceled += instance.OnShield;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -587,12 +624,15 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
             @SwitchWeapon.started -= instance.OnSwitchWeapon;
             @SwitchWeapon.performed -= instance.OnSwitchWeapon;
             @SwitchWeapon.canceled -= instance.OnSwitchWeapon;
-            @Stealth.started -= instance.OnStealth;
-            @Stealth.performed -= instance.OnStealth;
-            @Stealth.canceled -= instance.OnStealth;
             @Reload.started -= instance.OnReload;
             @Reload.performed -= instance.OnReload;
             @Reload.canceled -= instance.OnReload;
+            @Stealth.started -= instance.OnStealth;
+            @Stealth.performed -= instance.OnStealth;
+            @Stealth.canceled -= instance.OnStealth;
+            @Shield.started -= instance.OnShield;
+            @Shield.performed -= instance.OnShield;
+            @Shield.canceled -= instance.OnShield;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -749,8 +789,9 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
         void OnShoot(InputAction.CallbackContext context);
         void OnCenterCamera(InputAction.CallbackContext context);
         void OnSwitchWeapon(InputAction.CallbackContext context);
-        void OnStealth(InputAction.CallbackContext context);
         void OnReload(InputAction.CallbackContext context);
+        void OnStealth(InputAction.CallbackContext context);
+        void OnShield(InputAction.CallbackContext context);
     }
     public interface IOpenMenuActions
     {

@@ -42,6 +42,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Reload",
+                    "type": "Button",
+                    "id": "35b5f846-a33c-4d0b-bb49-a75b6a118d45",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Stealth",
                     "type": "Button",
                     "id": "59dd50b7-d061-4cf7-a581-a9955d87188c",
@@ -51,9 +60,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Reload",
+                    "name": "Shield",
                     "type": "Button",
-                    "id": "35b5f846-a33c-4d0b-bb49-a75b6a118d45",
+                    "id": "72325da1-35fa-4199-b79f-a107977915f8",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -223,6 +232,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Reload",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3ebd106b-7163-4493-ad57-286f88029b9d",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shield",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4f532523-3831-44cd-9eec-e60f5431a67f",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shield",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -13,9 +13,9 @@ namespace Assets.Units
     {
         [SerializeField, Min(0f)] private float _maxActionPoints = 100f;
         [SerializeField, Min(0f)] private float _actionPoints = 100f;
-        [Header("EnergyUse")]
-        [SerializeField, Min(0f)] private float _energyUseInStealth = 1f; 
-        [SerializeField, Min(0f)] private float _energyUseInStealthMove = 2f;
+        [Header("Shield")]
+        [SerializeField, Min(0f)] private float _energyUseInShield = 1f; 
+        [SerializeField, Range(0f, 1f)] private float _shieldDamageAbsorption = 0.15f;
 
         private VitalityMonitor _vitalityMonitor;
         private PlayerMove _playerMove;
@@ -34,6 +34,7 @@ namespace Assets.Units
             set => _actionPoints = Mathf.Clamp(value, 0f, MaxActionPoints);
         }
         public bool IsStealth { get; private set; } = false;
+        public bool IsShield { get; private set; } = false;
 
         public UnityAction<bool> OnActiveStealth;
 
@@ -54,6 +55,10 @@ namespace Assets.Units
 
         public override void ApplyDamage(float damage)
         {
+            var percent = 1f - _shieldDamageAbsorption;
+            damage = IsShield ? damage * percent : damage;
+            TakeOffActionPoints(Mathf.RoundToInt(damage));
+
             base.ApplyDamage(damage);
             _vitalityMonitor.ChangeHealth((int) Health, MaxHealth);
         }
@@ -75,7 +80,7 @@ namespace Assets.Units
 
         public void ActivateStealth()
         {
-            if (!IsStealth && ActionPoints == 0)
+            if (!IsStealth && ActionPoints == 0 || IsShield)
                 return;
             
             IsStealth = !IsStealth;
@@ -99,25 +104,53 @@ namespace Assets.Units
             OnActiveStealth?.Invoke(IsStealth);
         }
 
-        private IEnumerator TakeOffActionPointsWithinTime(int value, float time)
+        public void ActiveShield()
+        {
+            if (!IsShield && ActionPoints == 0 || IsStealth)
+                return;
+            
+            IsShield = !IsShield;
+            _playerMove?.LesserSpeed(IsShield);
+
+            if (IsShield)
+            {
+                if (_actionPointsCoroutine != null)
+                    StopCoroutine(_actionPointsCoroutine);
+
+                _vitalityMonitor.PrintConsoleText("Максимум брони!!");
+                _actionPointsCoroutine = StartCoroutine(TakeOffActionPointsWithinTime(1, 0.1f, true));
+            }
+            else
+            {
+                _vitalityMonitor.PrintConsoleText("Минимум брони!!");
+                StopCoroutine(_actionPointsCoroutine);
+                _actionPointsCoroutine = StartCoroutine(AddActionPointsWithinTime(1, 0.1f));
+            }
+        }
+
+        private IEnumerator TakeOffActionPointsWithinTime(int value, float time, bool isAlternate = false)
         {
             float deltaTime = 0; 
             while (ActionPoints > 0)
             {
-                float multiplierTime = _energyAbility.GetEnergyConsumption();
+                float multiplierTime = !isAlternate ? _energyAbility.GetEnergyConsumption() : _energyUseInShield;
                 deltaTime += Time.deltaTime;
                 
                 if (deltaTime >= time / multiplierTime)
                 {
                     deltaTime = 0;
-                    TakeOffActionPoints(value);
-
-                    if (ActionPoints == 0)
-                        ActivateStealth(); 
+                    TakeOffActionPoints(value);  
                 }
 
                 yield return null;
             }
+            DeactivateAllAbility();
+        }
+
+        private void DeactivateAllAbility()
+        {
+            ActivateStealth();
+            ActiveShield();
         }
         
         private IEnumerator AddActionPointsWithinTime(int value, float time)

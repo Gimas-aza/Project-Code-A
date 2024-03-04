@@ -4899,7 +4899,7 @@ GameObject:
   - component: {fileID: 4432559748360014462}
   - component: {fileID: 7894171402880283598}
   m_Layer: 9
-  m_Name: TestGun
+  m_Name: 1TestGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4938,7 +4938,7 @@ MonoBehaviour:
   _weaponMuzzle: {fileID: 6402481285226387051}
   _projectilePrefab: {fileID: 6934365160915032090, guid: 4bdbf23cc9d1a619d973afb9d2f990cb, type: 3}
   _numberProjectile: 5
-  _totalNumberProjectiles: 10
+  _totalNumberProjectiles: 20
   _cooldownReload: 1.5
   _forceMode: 1
   _force: 50

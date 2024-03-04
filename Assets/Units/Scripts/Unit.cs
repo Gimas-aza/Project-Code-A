@@ -35,7 +35,6 @@ namespace Assets.Units
                 throw new ArgumentOutOfRangeException(nameof(damage));
             
             Health -= damage;
-            Debug.Log($"Health: {Health}");
             OnDamageTaken?.Invoke();
 
             if (!IsAlive())
