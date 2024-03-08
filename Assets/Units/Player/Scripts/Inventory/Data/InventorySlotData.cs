@@ -1,14 +1,12 @@
 using System;
-using UnityEngine;
 
 namespace Assets.Units.Player.Inventory
 {
     [Serializable]
-    public class ItemData 
+    public class InventorySlotData
     {
         public string ItemId;
-        [Min(0)] 
-        public int ItemWeight;
-    }   
+        public int Amount;
+        public Item item;
+    }
 }
-

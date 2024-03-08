@@ -9,7 +9,8 @@ namespace Assets.Units.Player.Inventory
     public class InventoryTableData
     {
         public string OwnerId;
-        public List<Item> Items = new();
+        public List<InventorySlot> Items = new();
+        public int MaxCapacity;
         public int Capacity; 
     }
 }

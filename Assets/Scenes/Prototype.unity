@@ -1042,7 +1042,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 169507329}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.38743293, y: 0.056181848, z: -0.023662528, w: 0.91988015}
+  m_LocalRotation: {x: 0.38743293, y: 0.05618192, z: -0.023662573, w: 0.91988015}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8872,7 +8872,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 766294630}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.35376263, y: 0.057004336, z: -0.021606125, w: 0.9333465}
+  m_LocalRotation: {x: 0.35376263, y: 0.05700434, z: -0.021606129, w: 0.9333465}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -27705,7 +27705,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687258581}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.3977733, y: -0.008406256, z: 0.0036446976, w: 0.917438}
+  m_LocalRotation: {x: 0.3977733, y: -0.00840619, z: 0.003644669, w: 0.917438}
   m_LocalPosition: {x: 0.68897825, y: 53.2, z: -82.543686}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -31333,7 +31333,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1942392687}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.3234061, y: 0.057672948, z: -0.019752072, w: 0.9442946}
+  m_LocalRotation: {x: 0.3234061, y: 0.05767305, z: -0.019752122, w: 0.9442946}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -32201,9 +32201,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _data:
     OwnerId: Gimas
-    Items:
-    - {fileID: 4646619150474305395, guid: 40544923c47595d429cebcdb1453aa9d, type: 3}
-    Capacity: 100
+    MaxCapacity: 100
+    Capacity: 0
+  _item: {fileID: 4646619150474305395, guid: 40544923c47595d429cebcdb1453aa9d, type: 3}
+  _numberItem: 0
 --- !u!4 &2074804755
 Transform:
   m_ObjectHideFlags: 0

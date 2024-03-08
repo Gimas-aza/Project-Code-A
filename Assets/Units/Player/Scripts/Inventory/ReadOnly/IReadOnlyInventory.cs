@@ -4,8 +4,8 @@ namespace Assets.Units.Player.Inventory
 {
     public interface IReadOnlyInventory
     {
-        event Action<string, int> ItemsAdded;
-        event Action<string, int> ItemsRemoved;
+        event Action<Item, int> ItemsAdded;
+        event Action<Item, int> ItemsRemoved;
 
         string OwnerId { get; }
         

@@ -7,23 +7,7 @@ namespace Assets.Units.Player.Inventory
     {
         [SerializeField] private ItemData _data = new();
 
-        public event Action<int> ItemAmountChanged;
-
-        public string ItemId 
-        { 
-            get => _data.ItemId; 
-        }
-        public int Amount 
-        { 
-            get => _data.Amount; 
-            set
-            {
-                if (_data.Amount != value)
-                {
-                    _data.Amount = value;
-                    ItemAmountChanged?.Invoke(value);
-                }
-            }
-        }
+        public string ItemId => _data.ItemId;
+        public int ItemWeight => _data.ItemWeight;
     }
 }
