@@ -67,6 +67,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Interaction",
+                    "type": "Button",
+                    "id": "83e3528e-6762-4793-89a5-7c6968faa329",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -256,6 +265,28 @@
                     "action": "Shield",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ba6c3213-c839-46f6-8723-04da5c967a8e",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interaction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1906c4c9-d7a2-4dbf-bd4d-913cbec500a8",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interaction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -263,15 +294,6 @@
             "name": "OpenMenu",
             "id": "2e8bf662-e8dc-4f84-8057-efa4f9068ba2",
             "actions": [
-                {
-                    "name": "New action",
-                    "type": "Button",
-                    "id": "d55117dd-623b-4c66-9855-db04812c454c",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
                 {
                     "name": "SelectMenu",
                     "type": "Button",
@@ -310,17 +332,6 @@
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "cd5305b3-5e8d-4ce8-b067-8f74754d2322",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "New action",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "",
                     "id": "16f111dc-b282-4b72-95c5-81206e7baa5e",

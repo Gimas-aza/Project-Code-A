@@ -11,10 +11,11 @@ GameObject:
   - component: {fileID: 7480951044945208745}
   - component: {fileID: 27655689289943668}
   - component: {fileID: 1942443675417930337}
+  - component: {fileID: 7485200479972093227}
   - component: {fileID: 2848759472034438090}
   - component: {fileID: 4646619150474305395}
-  m_Layer: 0
-  m_Name: Item01 1
+  m_Layer: 11
+  m_Name: Item01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.22273625, z: 1}
+  m_LocalScale: {x: 2.3612, y: 0.52592486, z: 2.3612}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -85,6 +86,33 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!54 &7485200479972093227
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1390603730719088102}
+  serializedVersion: 4
+  m_Mass: 100
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 1152
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 1152
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 2
 --- !u!65 &2848759472034438090
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -119,5 +147,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data:
-    ItemId: Gimas1
-    ItemWeight: 10
+    ItemId: Disk
+    Name: Gun1
+    Description: RpgWeapon
+    Icon: {fileID: 21300000, guid: c9774839d649a8940a665ba76ecff0eb, type: 3}
+    Tag: 0
+    ItemWeight: 1

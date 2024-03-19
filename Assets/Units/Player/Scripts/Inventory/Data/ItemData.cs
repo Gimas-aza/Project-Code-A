@@ -7,6 +7,10 @@ namespace Assets.Units.Player.Inventory
     public class ItemData 
     {
         public string ItemId;
+        public string Name;
+        public string Description;
+        public Sprite Icon;
+        public TagItem Tag;
         [Min(0)] 
         public int ItemWeight;
     }   

@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 1942443675417930337}
   - component: {fileID: 2848759472034438090}
   - component: {fileID: 4646619150474305395}
-  m_Layer: 0
-  m_Name: Item01
+  m_Layer: 11
+  m_Name: Item01 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -119,5 +119,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data:
-    ItemId: Dick
-    ItemWeight: 2
+    ItemId: Gimas1
+    ItemWeight: 10

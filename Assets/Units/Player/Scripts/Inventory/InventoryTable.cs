@@ -1,6 +1,5 @@
 using System;
 using System.Linq;
-using UnityEngine;
 
 namespace Assets.Units.Player.Inventory
 {
@@ -87,10 +86,18 @@ namespace Assets.Units.Player.Inventory
 
         public int GetAmount(string itemId)
         {
-            var item = _data.Items
+            var itemSlot = _data.Items
                 .Where(i => i.ItemId == itemId)
                 .FirstOrDefault();
-            return item == null ? 0 : item.Amount;
+            return itemSlot == null ? 0 : itemSlot.Amount;
+        }
+
+        public Item GetItem(string itemId)
+        {
+            var itemSlot = _data.Items
+                .Where(i => i.ItemId == itemId)
+                .FirstOrDefault();
+            return itemSlot.Item;
         }
 
         public bool Has(string itemId, int amount)

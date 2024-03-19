@@ -89,6 +89,15 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interaction"",
+                    ""type"": ""Button"",
+                    ""id"": ""83e3528e-6762-4793-89a5-7c6968faa329"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -278,6 +287,28 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
                     ""action"": ""Shield"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ba6c3213-c839-46f6-8723-04da5c967a8e"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interaction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1906c4c9-d7a2-4dbf-bd4d-913cbec500a8"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interaction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -285,15 +316,6 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
             ""name"": ""OpenMenu"",
             ""id"": ""2e8bf662-e8dc-4f84-8057-efa4f9068ba2"",
             ""actions"": [
-                {
-                    ""name"": ""New action"",
-                    ""type"": ""Button"",
-                    ""id"": ""d55117dd-623b-4c66-9855-db04812c454c"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
                 {
                     ""name"": ""SelectMenu"",
                     ""type"": ""Button"",
@@ -332,17 +354,6 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
                 }
             ],
             ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""cd5305b3-5e8d-4ce8-b067-8f74754d2322"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""New action"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
                 {
                     ""name"": """",
                     ""id"": ""16f111dc-b282-4b72-95c5-81206e7baa5e"",
@@ -489,9 +500,9 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
         m_Player_Reload = m_Player.FindAction("Reload", throwIfNotFound: true);
         m_Player_Stealth = m_Player.FindAction("Stealth", throwIfNotFound: true);
         m_Player_Shield = m_Player.FindAction("Shield", throwIfNotFound: true);
+        m_Player_Interaction = m_Player.FindAction("Interaction", throwIfNotFound: true);
         // OpenMenu
         m_OpenMenu = asset.FindActionMap("OpenMenu", throwIfNotFound: true);
-        m_OpenMenu_Newaction = m_OpenMenu.FindAction("New action", throwIfNotFound: true);
         m_OpenMenu_SelectMenu = m_OpenMenu.FindAction("SelectMenu", throwIfNotFound: true);
         m_OpenMenu_Skills = m_OpenMenu.FindAction("Skills", throwIfNotFound: true);
         m_OpenMenu_Inventory = m_OpenMenu.FindAction("Inventory", throwIfNotFound: true);
@@ -567,6 +578,7 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Reload;
     private readonly InputAction m_Player_Stealth;
     private readonly InputAction m_Player_Shield;
+    private readonly InputAction m_Player_Interaction;
     public struct PlayerActions
     {
         private @InputSystem m_Wrapper;
@@ -578,6 +590,7 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
         public InputAction @Reload => m_Wrapper.m_Player_Reload;
         public InputAction @Stealth => m_Wrapper.m_Player_Stealth;
         public InputAction @Shield => m_Wrapper.m_Player_Shield;
+        public InputAction @Interaction => m_Wrapper.m_Player_Interaction;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -608,6 +621,9 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
             @Shield.started += instance.OnShield;
             @Shield.performed += instance.OnShield;
             @Shield.canceled += instance.OnShield;
+            @Interaction.started += instance.OnInteraction;
+            @Interaction.performed += instance.OnInteraction;
+            @Interaction.canceled += instance.OnInteraction;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -633,6 +649,9 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
             @Shield.started -= instance.OnShield;
             @Shield.performed -= instance.OnShield;
             @Shield.canceled -= instance.OnShield;
+            @Interaction.started -= instance.OnInteraction;
+            @Interaction.performed -= instance.OnInteraction;
+            @Interaction.canceled -= instance.OnInteraction;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -654,7 +673,6 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
     // OpenMenu
     private readonly InputActionMap m_OpenMenu;
     private List<IOpenMenuActions> m_OpenMenuActionsCallbackInterfaces = new List<IOpenMenuActions>();
-    private readonly InputAction m_OpenMenu_Newaction;
     private readonly InputAction m_OpenMenu_SelectMenu;
     private readonly InputAction m_OpenMenu_Skills;
     private readonly InputAction m_OpenMenu_Inventory;
@@ -663,7 +681,6 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
     {
         private @InputSystem m_Wrapper;
         public OpenMenuActions(@InputSystem wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Newaction => m_Wrapper.m_OpenMenu_Newaction;
         public InputAction @SelectMenu => m_Wrapper.m_OpenMenu_SelectMenu;
         public InputAction @Skills => m_Wrapper.m_OpenMenu_Skills;
         public InputAction @Inventory => m_Wrapper.m_OpenMenu_Inventory;
@@ -677,9 +694,6 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_OpenMenuActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_OpenMenuActionsCallbackInterfaces.Add(instance);
-            @Newaction.started += instance.OnNewaction;
-            @Newaction.performed += instance.OnNewaction;
-            @Newaction.canceled += instance.OnNewaction;
             @SelectMenu.started += instance.OnSelectMenu;
             @SelectMenu.performed += instance.OnSelectMenu;
             @SelectMenu.canceled += instance.OnSelectMenu;
@@ -696,9 +710,6 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
 
         private void UnregisterCallbacks(IOpenMenuActions instance)
         {
-            @Newaction.started -= instance.OnNewaction;
-            @Newaction.performed -= instance.OnNewaction;
-            @Newaction.canceled -= instance.OnNewaction;
             @SelectMenu.started -= instance.OnSelectMenu;
             @SelectMenu.performed -= instance.OnSelectMenu;
             @SelectMenu.canceled -= instance.OnSelectMenu;
@@ -792,10 +803,10 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
         void OnReload(InputAction.CallbackContext context);
         void OnStealth(InputAction.CallbackContext context);
         void OnShield(InputAction.CallbackContext context);
+        void OnInteraction(InputAction.CallbackContext context);
     }
     public interface IOpenMenuActions
     {
-        void OnNewaction(InputAction.CallbackContext context);
         void OnSelectMenu(InputAction.CallbackContext context);
         void OnSkills(InputAction.CallbackContext context);
         void OnInventory(InputAction.CallbackContext context);
